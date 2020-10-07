@@ -1,0 +1,24 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{pythontex}
+
+\begin{document}
+    \begin{pycode}
+import math
+def convert(x, y, z):
+    k = math.sqrt(2) / 4
+    x2d = -k*x + y
+    y2d = -k*x + z
+    print(f"({round(x2d,3)},{round(y2d,3)})")
+    \end{pycode}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (\py{convert(1,2,3)});
+        \end{tikzpicture}
+    \end{center}
+
+    \py{convert(1,2,4)}
+
+\end{document}

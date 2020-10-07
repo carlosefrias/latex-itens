@@ -1,0 +1,27 @@
+\documentclass{standalone}
+
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+\begin{document}
+	\begin{tikzpicture}
+	\tkzDefPoints{-2/0/X1, 8/0/X2, 0/-2/Y1, 0/6/Y2}
+	\tkzDefPoints{0/0/O, 3/4/B, 6/0/A}
+	
+	\tkzDrawLine[add=0.5 and 0.5](O,B)
+	
+	\tkzDefLine[bisector](B,O,A) \tkzGetPoint{P}
+	\tkzDrawLine[add=4 and 13](O,P)
+	
+	\tkzDrawPoints(A,B)
+	\tkzLabelPoint[below right](O){\(O\)}
+	\tkzLabelPoint[below](A){\(A\)}
+	\tkzLabelPoint[above left](B){\(B\)}
+	\tkzLabelLine[pos=13, below](O,P){\(r\)}
+	
+	\tkzDrawSegments[->, >=latex](X1,X2 Y1,Y2)
+	\tkzLabelPoint[below](X2){\(x\)}
+	\tkzLabelPoint[left](Y2){\(y\)}
+	
+	\end{tikzpicture}
+\end{document}

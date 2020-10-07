@@ -1,0 +1,35 @@
+\documentclass{standalone}
+
+\usepackage{tikz, tikz-3dplot}
+
+\begin{document}
+	\tdplotsetmaincoords{70}{110}
+	\begin{tikzpicture}[tdplot_main_coords, scale=1]
+		\coordinate (A) at (7, 1, 4);
+		\coordinate (B) at (7.57, 1.86, 5.71);
+		\coordinate (C) at (5.86, 1.29, 6.57);
+		\coordinate (D) at (5.29, 0.43, 4.86);
+		\coordinate (E) at (6.14, 2.71, 3.43);
+		\coordinate (F) at (6.71, 3.57, 5.14);
+		\coordinate (G) at (5, 3, 6);
+		\coordinate (O) at (0, 0, 0);		
+		
+		\draw[thick, ->,  >=stealth] (0,0,0)--(6, 0, 0) node[left]{\(x\)};
+		\draw[thick, ->,  >=stealth] (0, 0, 0)--(0, 3, 0) node[right]{\(y\)};
+		\draw[thick, ->,  >=stealth] (0, 0, 0)--(0, 0, 6) node[left]{\(z\)};
+		
+		\draw[thick, fill=gray!10] (A) -- (E) -- (F) -- (G) -- (C) --(D) -- cycle;
+		\draw[thick] (B) -- (C);
+		\draw[thick] (B) -- (F);
+		\draw[thick] (B) -- (A);
+		
+		\draw (A) node[below left]{\(A\)};
+		\draw (B) node[above right]{\(B\)};
+		\draw (C) node[above]{\(C\)};
+		\draw (D) node[left]{\(D\)};
+		\draw (E) node[below]{\(E\)};
+		\draw (F) node[right]{\(F\)};
+		\draw (G) node[right]{\(G\)};
+		\draw (O) node[below]{\(O\)};
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass[png,border=10pt,tikz]{standalone}
+
+\usepackage{tikz, tkz-euclide, pdftexcmds}
+\usetikzlibrary{backgrounds}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\input{colored_balls.tex}
+
+\begin{document}
+	\begin{tikzpicture}[scale=0.8]
+	\def\height{0.75}
+	\def\length{3}
+	
+	\tkzDefPoint(0,0){A}
+	\tkzDefPoint(0.9*3,-1.1*0.75){B}
+	\tkzDefPoint(1.9*\length,0){C} \tkzDefPoint(1.1*\length, \height){D}
+	
+	%\tkzDrawPolygon(A,B,C,D) % Beware to put the right segments in foreground
+	% now this can not be a polygon: need to be split
+	% Same would apply to the shifted one if the balls touch the upper layer
+	
+	\tkzDrawSegments[dashed](C,D D,A);
+	
+	\begin{scope}[shift={(0,2)}]
+	\tkzDefPoint(0,0){A1}\tkzDefPoint(0.9*\length,-\height){B1}
+	\tkzDefPoint(1.9*\length,0){C1} \tkzDefPoint(1.1*\length, \height){D1}
+	\tkzDrawPolygon(A1,B1,C1,D1)
+	\end{scope}
+	
+	\tkzDrawSegments(A,A1 C1,C);
+	\tkzDrawSegments[dashed](D1,D)
+	\begin{pgfonlayer}{foreground}
+	\tkzDrawSegments(B,B1);
+	% other segments in foreground
+	\tkzDrawSegments(A,B B,C);
+	\end{pgfonlayer}
+	
+	% balls: beware the order matters
+	\ball{1}{0.15}
+	\ball[blue]{2.6}{0.35}
+	\ball{1.85}{-0.2}
+	\ball[blue]{4.3}{0.25}
+	\ball[blue]{3.425}{-0.1}
+	
+	\end{tikzpicture}
+\end{document}

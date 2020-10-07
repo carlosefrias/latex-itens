@@ -1,0 +1,23 @@
+%Last time of file creation:  1599773722.8161466
+
+\pytx@SVMCR{pytx@MCR@py@default@default@1}
+2 \sqrt{x + 1}\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@py@default@default@2}
+2 \sqrt{x + 1}\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@py@default@default@3}
+- \cos{\left(x \right)}\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@py@default@default@4}
+- x \cos{\left(x \right)} + \sin{\left(x \right)}\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@py@default@default@5}
+- x^{2} \cos{\left(x \right)} + 2 x \sin{\left(x \right)} + 2 \cos{\left(x \right)}\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@py@default@default@6}
+\frac{\left(2 x - 1\right) e^{2 x}}{4}\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@py@default@default@7}
+\log{\left(u + 1 \right)}\endpytx@SVMCR
+

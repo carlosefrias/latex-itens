@@ -1,0 +1,44 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+    \begin{center}
+        \def\angle{30}
+        \begin{tikzpicture}
+            %desenhando os eixos
+            \draw [thick, ->, >=stealth] (0,0) -- (-135:2.5) node[below right]{\(x\)};
+            \draw [thick, ->, >=stealth] (0,0) -- (5,0) node[below]{\(y\)};
+            \draw [thick, ->, >=stealth] (0,0) -- (0,4) node[left]{\(z\)};
+
+            %definindo alguns pontos
+            \coordinate (O) at (0,0);
+            \coordinate (C) at (2.5, 0.5);
+
+            %Desenhando o plano que contém a base (pontos definidos a olhometro)
+            \draw [fill=gray] (0,-0.5) -- (1, -1.4) -- (5, 1.3) -- (3.8, 2.1) -- cycle;
+            
+            %definindo pontos "extremos" na base do cone
+            \coordinate [rotate around={\angle:(C)}] (C1) at ($(C) + (0:1.8cm and 0.6cm)$);
+            \coordinate [rotate around={\angle:(C)}] (C2) at ($(C) + (180:1.8cm and 0.6cm)$);
+            \coordinate [rotate around={\angle:(C)}] (V) at ($(C) + (90:3cm)$);
+            
+            %desenhando o cone
+            \draw [fill=white, draw=none] (C1) -- (V) -- (C2);
+            \draw [fill=white, ultra thick, dashed, rotate around={\angle:(C)}] (C1) arc (5:175:1.8cm and 0.6cm);
+            \draw [fill=white, ultra thick, rotate around={\angle:(C)}] (C2) arc (175:365:1.8cm and 0.6cm);
+            \draw [ultra thick] (C1) -- (V) -- (C2);
+            
+            %desenhando a altura do cone
+            \draw [ultra thick, dashed] (C) -- (V);
+
+            %desenhando e marcando pontos e
+            \draw [fill=black] (C) circle(2pt) node[above right]{\(C\)};
+            \draw (V) node[above left]{\(V\)};
+            \draw (O) node[left]{\(O\)};
+            \draw (4.5,2) node{\(\alpha\)};
+        \end{tikzpicture}
+    \end{center}
+    
+\end{document}

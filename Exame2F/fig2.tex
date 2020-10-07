@@ -1,0 +1,62 @@
+\documentclass{standalone}
+
+\usepackage{tkz-euclide}
+
+\begin{document}
+	\begin{tikzpicture}
+		\clip(-2.2,-2.2) rectangle (2.2,4.2);
+		\tkzDefPoints{0/0/O, 2/0/A, 0/1.2/B, 0/2/C, 0/-4/X1, 0/6.4/X2}
+		
+		\tkzDefLine[parallel=through B](O,A) \tkzGetPoint{B1}
+		
+		\tkzInterLC(B,B1)(O,A)\tkzGetPoints{P1}{P2}
+		
+		%Aqui deveria ter usado arcos de elipse...
+		\tkzDrawArc[thick, black, fill=gray!20, draw=none](O,P2)(P1)
+		\tkzDrawArc[thick, black, fill=gray!20](X2,P1)(P2)
+		\tkzDrawArc[thick, black, densely dotted](X1,P2)(P1)
+		
+		\tkzDrawSegment[densely dotted](O,P1)
+		\tkzDrawSegment(B,P2)
+		
+		\tkzDefLine[orthogonal=through P1](O,P1) \tkzGetPoint{Q1}
+		\tkzDefLine[orthogonal=through P2](O,P2) \tkzGetPoint{Q2}
+		
+		\tkzInterLL(P1,Q1)(P2,Q2)\tkzGetPoint{S}
+		\tkzDrawSegments[densely dotted](P1,S P2,S)
+		\tkzDrawSegment(S,C)
+		\tkzLabelSegment(S,C){\(h\)}
+		
+		\tkzDrawCircle(O,A)
+		\tkzLabelSegment(O,P1){\(R\)}
+		\tkzLabelSegment[fill=gray!20](B,P2){\(r\)}
+		
+		
+		%Desenhando o satélite (bastante aldrabado)
+		\tkzDefPointBy[translation=from B to P2](S)\tkzGetPoint{S1}
+		\tkzDefPointBy[homothety=center S ratio 0.1](S1)\tkzGetPoint{S2}
+		\tkzDefPointBy[homothety=center S ratio -0.1](S1)\tkzGetPoint{S3}
+		\tkzDrawSegment[ultra thick](S2,S3)
+		
+		\tkzDefPointBy[homothety=center S ratio -0.25](C)\tkzGetPoint{S4}
+		\tkzDefPointBy[homothety=center S ratio -0.4](C)\tkzGetPoint{S5}
+		
+		\tkzDefLine[parallel=through S2](S,B) \tkzGetPoint{S6}
+		\tkzDefLine[parallel=through S3](S,B) \tkzGetPoint{S7}
+		\tkzInterLC(S2,S6)(S4,S5)\tkzGetPoints{S8}{S9}
+		\tkzInterLC(S3,S7)(S4,S5)\tkzGetPoints{S10}{S11}
+				
+		\tkzDrawSegment[ultra thick](S,S5)
+		
+		\tkzDrawArc[black, thick, fill=white](S,S2)(S3)
+		\draw [rounded corners=2pt, thick, fill=white](S10) -- (S9) -- (S8) -- (S11) -- cycle;
+		\tkzDrawCircle[R, thick](S4,1.2 pt)
+		\draw [thick](0.2, 3.565) rectangle (0.4, 3.765);
+		\draw [thick](0.4, 3.565) rectangle (0.6, 3.765);
+		\draw [thick](-0.2, 3.565) rectangle (-0.4, 3.765);
+		\draw [thick](-0.4, 3.565) rectangle (-0.6, 3.765);
+		%Fim do satélite
+		
+		\tkzDrawPoints(O, B, S5)
+	\end{tikzpicture}
+\end{document}

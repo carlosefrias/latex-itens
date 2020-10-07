@@ -1,0 +1,136 @@
+=>PYTHONTEX#PYGlatex#default#defaultverb#0#v#####74#
+\py
+=>PYTHONTEX#PYGlatex#default#defaultverb#1#v#####74#
+\py{2 + 4**2}
+=>PYTHONTEX#py#default#default#0#i#####74#
+2 + 4**2
+=>PYTHONTEX#PYGlatex#default#defaultverb#2#v#####74#
+\py{'ABC'.lower()}
+=>PYTHONTEX#py#default#default#1#i#####74#
+'ABC'.lower()
+=>PYTHONTEX#PYGlatex#default#defaultverb#3#v#####74#
+\py
+=>PYTHONTEX#PYGlatex#default#defaultverb#4#v#####74#
+\verb
+=>PYTHONTEX#PYGlatex#default#defaultverb#5#v#####76#
+\pyc
+=>PYTHONTEX#PYGlatex#default#defaultverb#6#v#####76#
+\pyc{var = 2}
+=>PYTHONTEX#py#default#default#2#c#####76#
+var = 2
+=>PYTHONTEX#PYGlatex#default#defaultverb#7#v#####76#
+\py{var}
+=>PYTHONTEX#py#default#default#3#i#####76#
+var
+=>PYTHONTEX#PYGlatex#default#defaultverb#8#v#####78#
+\pyb
+=>PYTHONTEX#PYGlatex#default#defaultverb#9#v#####78#
+\pyb{var = 2}
+=>PYTHONTEX#py#default#default#4#b#####78#
+var = 2
+=>PYTHONTEX#PYGlatex#default#defaultverb#10#v#####78#
+\printpythontex
+=>PYTHONTEX#PYGlatex#default#defaultverb#11#v#####78#
+\stdoutpythontex
+=>PYTHONTEX#PYGlatex#default#defaultverb#12#v#####80#
+\pyv
+=>PYTHONTEX#PYGlatex#default#defaultverb#13#v#####80#
+\pyv{var = 2}
+=>PYTHONTEX#py#default#defaultverb#0#v#####80#
+var = 2
+=>PYTHONTEX#PYGlatex#default#defaultverb#14#v#####82#
+\pys
+=>PYTHONTEX#py#default#defaultverb#1#v#####82#
+var
+=>PYTHONTEX#PYGlatex#default#defaultverb#15#v#####82#
+\pys{\verb|var = !{var}|}
+=>PYTHONTEX#py#default#default#5#s#####82#
+\verb|var = !{var}|
+=>PYTHONTEX#PYGlatex#default#defaultverb#16#v#####87#
+\pyc
+=>PYTHONTEX#PYGlatex#default#defaultverb#17#v#####87#
+\pyb
+=>PYTHONTEX#PYGlatex#default#defaultverb#18#v#####87#
+\pyv
+=>PYTHONTEX#PYGlatex#default#defaultverb#19#v#####87#
+\pys
+=>PYTHONTEX#PYGtext#default#defaultverb#0#verbatim#####88#
+\begin{pycode}
+print(r'\begin{center}')
+print(r'\textit{A message from Python!}')
+print(r'\end{center}')
+\end{pycode}
+=>PYTHONTEX#py#default#default#6#code#####96#
+print(r'\begin{center}')
+print(r'\textit{A message from Python!}')
+print(r'\end{center}')
+=>PYTHONTEX#PYGlatex#default#defaultverb#20#v#####102#
+\begin
+=>PYTHONTEX#PYGlatex#default#defaultverb#21#v#####102#
+\end
+=>PYTHONTEX#PYGpython#default#defaultverb#0#verbatim#####108#
+from sympy import *
+=>PYTHONTEX#PYGpython#default#defaultverb#1#verbatim#####112#
+from pylab import *
+=>PYTHONTEX#PYGtext#default#defaultverb#1#verbatim#####118#
+\begin{pyconsole}
+var = 1 + 1
+var
+\end{pyconsole}
+=>PYTHONTEX#pycon#default#default#0#console#####125#
+var = 1 + 1
+var
+=>PYTHONTEX#PYGlatex#default#defaultverb#22#v#####129#
+\pycon
+=>PYTHONTEX#PYGpython#default#defaultverb#2#v#####132#
+__future__
+=>PYTHONTEX#PYGpython#default#defaultverb#3#v#####132#
+__future__
+=>PYTHONTEX#PYGlatex#default#defaultverb#23#v#####148#
+\setpythontexworkingdir
+=>PYTHONTEX#PYGlatex#default#defaultverb#24#v#####148#
+\setpythontexoutputdir
+=>PYTHONTEX#PYGlatex#default#defaultverb#25#v#####157#
+\setpythontexfv
+=>PYTHONTEX#PYGlatex#default#defaultverb#26#v#####157#
+\fvset
+=>PYTHONTEX#PYGpython#default#defaultverb#4#verbatim#####164#
+my_string = '¥ § ß Ğ Ð Ñ Ö þ ø'
+=>PYTHONTEX#PYGlatex#default#defaultverb#27#verbatim#####171#
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+=>PYTHONTEX#PYGlatex#default#defaultverb#28#verbatim#####176#
+\usepackage{fontspec}
+=>PYTHONTEX#PYGlatex#default#defaultverb#29#verbatim#####180#
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+=>PYTHONTEX#PYGpython#default#defaultverb#5#verbatim#####187#
+from __future__ import unicode_literals
+=>PYTHONTEX:SETTINGS#
+version=0.17
+outputdir=pythontex-files-pythontex_quickstart
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|
+pygfamily=PYGlatex|latex|
+pygfamily=PYGtext|text|
+pygfamily=PYGpython|python|

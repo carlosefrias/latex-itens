@@ -1,0 +1,49 @@
+
+\makeatletter
+
+\pgfdeclareradialshading[tikz@ball]{my ball}{\pgfqpoint{5bp}{10bp}}{%
+ color(0bp)=(tikz@ball!10!white);
+ color(8bp)=(tikz@ball!65!white);
+ color(12bp)=(tikz@ball);
+ color(25bp)=(tikz@ball!70!black);
+ color(50bp)=(black)}
+
+\pgfdeclareradialshading[tikz@ball]{new ball}{\pgfqpoint{12bp}{12bp}}{%
+ color(0cm)=(tikz@ball!10!white);
+ color(0.5cm)=(tikz@ball!50!white);
+ color(0.75cm)=(tikz@ball);
+ color(0.9cm)=(tikz@ball!80!black);
+ color(1cm)=(tikz@ball!60!black)} 
+
+% code by percusse:
+% https://tex.stackexchange.com/a/74237/13304
+\pgfdeclareradialshading{ball shadow}{\pgfpointorigin}%
+{color(0cm)=(black);
+color(2mm)=(gray!70);
+color(3mm)=(gray!30);
+color(7mm)=(white)
+} 
+
+% to make possible use "myball color=..." 
+\tikzoption{my ball color}{\pgfutil@colorlet{tikz@ball}{#1}\def\tikz@shading{my ball}\tikz@addmode{\tikz@mode@shadetrue}}
+
+\tikzoption{new ball color}{\pgfutil@colorlet{tikz@ball}{#1}\def\tikz@shading{new ball}\tikz@addmode{\tikz@mode@shadetrue}}
+
+\tikzoption{ball shadow color}{\pgfutil@colorlet{tikz@ball}{#1}\def\tikz@shading{ball shadow}\tikz@addmode{\tikz@mode@shadetrue}}
+
+\newcommand{\ball}[3][white]{%
+\begin{scope}[shift = {(#2,#3)}]
+	\node[shading=ball shadow,xscale=2,yscale=0.3,circle,minimum size=7mm] 
+	at (0.15,-0.225){};
+	% test to decide which shading use: special one for white balls
+	% not 100% efficient: maybe it's better to use directly a custom
+	% white ball shading, but this way one could always use 
+	% "my ball color=green" say
+	\ifnum\pdf@strcmp{#1}{white}=\z@%  
+	\shade[my ball color=#1] (0.15,0.25) circle (0.5);
+	\else
+	\shade[new ball color=#1] (0.15,0.25) circle (0.5);
+	\fi
+\end{scope}
+}
+\makeatother

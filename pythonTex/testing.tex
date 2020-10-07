@@ -1,0 +1,59 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+\usepackage{commath}
+\usepackage{pythontex}
+\usepackage{nopageno}
+
+\newlist{itens}{enumerate}{4}
+\setlist[itens]{label*=\textbf{\arabic*.}}
+
+\newlist{emulti}{enumerate}{1}
+\setlist[emulti]{label=\textbf{(\Alph*)}}
+
+\begin{document}
+	\begin{itens}
+        \item Determine uma expressão para a derivada de cada uma das funções definidas em seguida:
+        
+        \begin{multicols}{2}
+        	\begin{itens}
+        		\item \(f\left(x\right)=x^3+2x^2+3x-4\)
+        		\item \(g\left(x\right)=\sin\left(e^x+\ln x\right)\)
+        		\item \(h\left(x\right)=\dfrac{3x-4}{x^2\left(x^3+2\right)}\)
+        		\item \(i\left(x\right)=x\times\ln x\)
+        		\item \(j\left(x\right)=e^{\sqrt{2x+1}}\)
+        		\item \(k\left(x\right)=\cos\left(e^{x^2}+\dfrac{1}{x}\right)\)
+        	\end{itens}
+        \end{multicols}
+    \end{itens}
+	
+	\textbf {Soluções:}
+	
+	\begin{pycode}
+from sympy import *
+
+def derivada(funcao, var):
+	var = symbols(var)
+	derv = diff(funcao, var)
+	return latex(derv)
+	\end{pycode}
+	
+	\begin{itens}
+		\item \hfil
+		\begin{itens}
+			\begin{multicols}{2}
+				\item \(\py{derivada("x**3+2*x**2+3*x-4", "x")}\)
+				\item \(\py{derivada("sin(e**x+ln(x))", "x")}\)
+				\item \(\py{derivada("(3*x-4)/(x**2 * (x**3+2))", "x")}\)
+				\item \(\py{derivada("x*ln(x)", "x")}\)
+				\item \(\py{derivada("e**(sqrt(2*x+1))", "x")}\)
+				\item \(\py{derivada("cos(e^(x**2)+1/x)", "x")}\)
+			\end{multicols}
+		\end{itens}
+	\end{itens}
+
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass{article}
+
+\usepackage{tikz,rubikcube,rubikrotation}
+
+\begin{document}
+	\begin{figure}[hbt]
+		\centering%
+		\RubikCubeSolvedWY%
+		\ShowCube{2cm}{0.5}{\DrawRubikCubeRU}%
+		\quad\Rubik{U}\quad%
+		\RubikRotation{U}%
+		\ShowCube{2cm}{0.5}{\DrawRubikCubeRU}%
+		\quad\Rubik{R}\quad%
+		\RubikRotation{R}%
+		\ShowCube{2cm}{0.5}{\DrawRubikCubeRU}%
+		\quad\Rubik{F}\quad%
+		\RubikRotation{F}%
+		\ShowCube{2cm}{0.5}{\DrawRubikCubeRU}%
+		\caption{The rotations \rr{U}, \rr{R}, \rr{F}\ on a solved cube.}
+	\end{figure}
+	
+\end{document}
+

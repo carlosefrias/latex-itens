@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[english, greek]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf, tikz}
+\usetikzlibrary{arrows}
+\usepackage{caption}
+\usepackage{float}
+
+\newcounter{ccount}
+
+\begin{document}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.7]
+			\draw [->, thick] (-2, 0) -- (6, 0);
+			\draw (6, 0) node[below]{$x$};
+			\draw [->, thick] (-1, -1) -- (2, 5);
+			\draw (2, 5) node[above]{$y$};
+			\draw (-0.7, 0) node[above]{$\mathrm{O}$};
+			\draw [shift={(-0.5,0)},color=black,fill=black] (0,0) -- (0:0.6) arc (0:63.43:0.6) -- cycle;
+			\draw (0.3, 0.3) node[above]{$\theta$};
+			\foreach \i in {2, 3, 4}
+			{
+				\setcounter{ccount}{\i}
+				\addtocounter{ccount}{-1}
+				\draw [fill=black] (\i, \i) circle(2pt) node[above] {\Alph{ccount}};
+			}
+			\draw (2, 2) -- (4, 4); 
+		\end{tikzpicture}
+		\captionsetup{labelformat=empty}
+	\end{figure}
+\end{document}

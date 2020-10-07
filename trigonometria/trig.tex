@@ -1,0 +1,103 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+\author{Carlos Frias}
+
+\begin{document}
+	
+	\begin{enumerate}
+		\item Na figura está representado, em referencial o.n. \(xOy\) a circunferência trigonométrica e um trapézio \([ABCD]\). 
+		
+		Sabe-se que:
+		
+		\begin{tabular} {l r}
+			\begin{minipage}{0.5\textwidth}
+				
+				\begin{itemize}
+					\item \(O\) é a origem do referencial
+					
+					\item \(A\) é um ponto móvel que se descola sobre a circunferência ao longo do primeiro quadrante
+					
+					\item \(\alpha\) é a amplitude, em radianos, do ângulo formado entre o semi-eixo positivo \(Ox\) e a semi-reta \(\dot{O}A\), com \(\alpha \in \left]0, \frac{\pi}{2}\right[\)
+					
+					\item \(B\) acompanha o movimento do ponto \(A\) deslocando-se sobre a circunferência ao longo do segundo quadrante de modo que \(\angle AOB\) é sempre um ângulo reto
+					
+					\item os pontos \(C\) e \(D\) são simétricos dos pontos \(B\) e de \(A\), respectivamente, em relação ao eixo das abcissas.  				
+				\end{itemize}
+ 
+			\end{minipage}
+		
+			\begin{minipage}{0.5\textwidth}
+				\begin{center}
+					\begin{tikzpicture}[scale=3]
+					\tkzInit[xmin=-1.2, xmax=1.2, ymin=-1.2, ymax=1.2]
+					\tkzDefPoint(1.2, 0){X2}
+					\tkzDefPoint(-1.2, 0){X1}
+					\tkzDefPoint(0, 1.2){Y2}
+					\tkzDefPoint(0, -1.2){Y1}
+					\tkzDefPoint(0,0){O}
+					\tkzDefPoint(1,0){P}
+					\tkzDefPointBy[rotation=center O angle 35](P)
+					\tkzGetPoint{A}
+					\tkzDefPointBy[rotation=center O angle 90](A)
+					\tkzGetPoint{B}
+				
+					\tkzDefPointBy[rotation=center O angle -35](P) 
+					\tkzGetPoint{D}
+					
+					\tkzDefPointBy[rotation=center O angle -90](D) 
+					\tkzGetPoint{C}
+					
+					\tkzDefCircle(O,P)
+					\tkzDrawCircle(O,P)		
+					\tkzDrawPoints(A, B, C, D, O)
+					
+					\tkzDrawPolygon[color=blue,fill=blue!30](A,B,C,D)
+					\tkzDrawSegments[dashed](O,A O,B)
+					\tkzMarkRightAngles[size=0.1](A,O,B)
+					
+					\tkzMarkAngles[size=0.3](X2,O,A)
+					
+					\tkzLabelAngle[pos=0.4](X2,O,A){\(\alpha\)}
+					
+					\tkzDrawSegments[thick, ->, >=stealth](X1,X2 Y1,Y2)
+					\tkzLabelPoints[below left](O)
+					\tkzLabelPoints[above right](A)
+					\tkzLabelPoints[above left](B)
+					\tkzLabelPoints[below left](C)
+					\tkzLabelPoints[below right](D)
+					\tkzLabelPoint(X2){\(x\)}
+					\tkzLabelPoint(Y2){\(y\)}
+					\end{tikzpicture}
+				\end{center}
+			\end{minipage}
+		\end{tabular}
+		
+		
+		Considere \(A\) e  \(P\) as funções que a cada valor de \(\alpha\) fazem corresponder, respetivamente, os valores da área e do perímetro do trapézio \([ABCD]\). 
+		
+		Resolva os itens seguintes por processos exclusivamente analíticos:
+	
+	\begin{enumerate}
+		
+		\item Mostre que \(A\left(\alpha\right)=\left(\sin \alpha + \cos \alpha\right)^2\), com \(\alpha\in\left]0, \frac{\pi}{2}\right[\).
+		
+		\item Determine o valor de \(\alpha\) para o qual é máxima a área de \([ABCD]\).
+		
+		Interprete geometricamente o resultado obtido.
+		
+		\item Mostre que \(P\left(\alpha\right) = 2\left(\sin\alpha + \cos\alpha + \sqrt{2}\right)\), com \(\alpha\in\left]0, \frac{\pi}{2}\right[\).
+		
+		\item Determine os valores de \(\alpha\) para os quais o perímetro do trapézio \([ABCD]\) é igual a \(2\sqrt{2}+\sqrt{3}+1\).
+		
+		\textbf{Sugestão}: Poderá ser-lhe útil determinar o valor exato de \(\cos \frac{\pi}{12}\). 
+	\end{enumerate}
+\end{enumerate}
+\begin{flushright}
+	Autor: Carlos Frias
+\end{flushright}
+
+\end{document}

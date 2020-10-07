@@ -1,0 +1,11 @@
+\documentclass{scrartcl}
+\usepackage{pst-3dplot,pst-math}
+\begin{document}
+\psframebox{%
+\begin{pspicture}(-3.5,-2)(4,6)
+\pstThreeDCoor[zMax=6]
+\pstIIIDCylinder[RotY=90, linecolor=black!40, increment=0.4, 
+	fillstyle=solid](0,3,0){1.41}{5}
+\end{pspicture}
+}
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+	\begin{center}
+		\def\maxN{24}
+		\begin{tikzpicture}[scale=0.5]
+			\draw[thick, ->, >=stealth] (0,0) -- (01+\maxN,0) node[below]{\(n\)};
+			\draw[thick, ->, >=stealth] (0,0) -- (0,7) node[left]{\(a_n\)};
+			
+			\foreach \n in {1,2,...,\maxN} {
+				\coordinate (P\n) at (\n, 5-4/\n);
+				\coordinate (Px\n) at (\n, 0);
+				\coordinate (Py\n) at (0, 5-4/\n);
+				\draw[ultra thin, gray, dashed] (P\n) -- (Px\n) node[below, black]{\n};
+%				\draw[dashed] (P\n) -- (Py\n) node[left]{\pgfmathparse{5-4/\n}\pgfmathresult};
+%				\draw[dashed] (P\n) -- (Py\n);
+				\draw[fill=black] (P\n) circle (1pt);
+			}
+			
+			\draw[ultra thick, red] (0,5) -- (1+\maxN, 5);
+			
+%			\draw 
+		\end{tikzpicture}
+	\end{center}
+\end{document}

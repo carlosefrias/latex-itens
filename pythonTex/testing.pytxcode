@@ -1,0 +1,44 @@
+=>PYTHONTEX#py#default#default#0#code#####36#
+from sympy import *
+
+def derivada(funcao, var):
+	var = symbols(var)
+	derv = diff(funcao, var)
+	return latex(derv)
+=>PYTHONTEX#py#default#default#1#i#####49#
+derivada("x**3+2*x**2+3*x-4", "x")
+=>PYTHONTEX#py#default#default#2#i#####50#
+derivada("sin(e**x+ln(x))", "x")
+=>PYTHONTEX#py#default#default#3#i#####51#
+derivada("(3*x-4)/(x**2 * (x**3+2))", "x")
+=>PYTHONTEX#py#default#default#4#i#####52#
+derivada("x*ln(x)", "x")
+=>PYTHONTEX#py#default#default#5#i#####53#
+derivada("e**(sqrt(2*x+1))", "x")
+=>PYTHONTEX#py#default#default#6#i#####54#
+derivada("cos(e^(x**2)+1/x)", "x")
+=>PYTHONTEX:SETTINGS#
+version=0.17
+outputdir=pythontex-files-testing
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|

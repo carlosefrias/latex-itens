@@ -1,0 +1,35 @@
+\documentclass{standalone}
+
+\usepackage{tikz, tikz-3dplot}
+
+\begin{document}
+	\tdplotsetmaincoords{70}{105}
+	\begin{tikzpicture}[tdplot_main_coords, scale=1]
+	
+	\coordinate (A) at (2,1,0);
+	\coordinate (B) at (1,1.225,2.225);
+	\coordinate (C) at (0,-1,2);
+	\coordinate (D) at (1,-1.225,-0.225);
+	\coordinate (V) at (3,-1,2);
+	\coordinate (O) at (0,0,0);
+	
+	\draw [thick] (A) -- (B) -- (C) -- (V) -- (D) --cycle;
+	\draw [thick] (B) -- (V);
+	\draw [thick] (V) -- (A);
+	\draw[thick, dashed] (C) -- (D);
+	
+	\draw (A) node[below] {\(A\)};
+	\draw (B) node[above right] {\(B\)};
+	\draw (C) node[above ] {\(C\)};
+	\draw (D) node[below] {\(D\)};
+	\draw (V) node[left] {\(V\)};
+	\draw (O) node[left] {\(O\)};
+	
+	\draw[thick, dotted] (0,0,0) -- (1.8, 0, 0);
+	\draw[thick, ->,  >=stealth] (1.8,0,0)--(3, 0, 0) node[left]{$x$};
+	\draw[thick, dotted] (0,0,0) -- (0, 0.6, 0);
+	\draw[thick, ->,  >=stealth] (0, 0.6, 0)--(0, 2, 0) node[right]{$y$};
+	\draw[thick, dotted] (0,0,0) -- (0, 0, 1.9);
+	\draw[thick, ->,  >=stealth] (0, 0, 1.9)--(0, 0, 3) node[left]{$z$};	
+	\end{tikzpicture}
+\end{document}

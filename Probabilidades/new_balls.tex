@@ -1,0 +1,23 @@
+\documentclass{article}
+
+\usepackage{tikz,tikz-3dplot}
+
+\begin{document}
+	
+	\tdplotsetmaincoords{70}{110}
+	\begin{tikzpicture}[tdplot_main_coords]
+	\draw[thick,->] (0,0,0) -- (4,0,0) node[anchor=north east]{$x$};
+	\draw[thick,->] (0,0,0) -- (0,4,0) node[anchor=north west]{$y$};
+	\draw[thick,->] (0,0,0) -- (0,0,4) node[anchor=south]{$z$};
+	\tdplotsetrotatedcoords{-37}{90}{0}
+	\coordinate (Shift) at (0,3,0);
+	\tdplotsetrotatedcoordsorigin{(Shift)}
+	\draw[thick,color=blue,tdplot_rotated_coords,->] (0,0,0) --
+	(1.41,0,0) node[anchor=north]{$x’$};
+	\draw[thick,color=blue,tdplot_rotated_coords,->] (0,0,0) --
+	(0,1.41,0) node[anchor=west]{$y’$};
+	\draw[thick,color=blue,tdplot_rotated_coords,->] (0,0,0) --
+	(0,0,5) node[anchor=south]{$z’$};
+	\end{tikzpicture}
+	
+\end{document}

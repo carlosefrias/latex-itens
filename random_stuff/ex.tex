@@ -1,0 +1,15 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+    \[\underset{x\to+\infty}{\lim}~\left(x^3+1\right)^{\frac{1}{\ln x}}=
+    \underset{x\to+\infty}{\lim}~e^{\ln \left(x^3+1\right)^{\frac{1}{\ln x}}}=
+    \underset{x\to+\infty}{\lim}~e^{\dfrac{\ln\left(x^3+1\right)}{\ln x}} =
+    \underset{x\to+\infty}{\lim}~e^{\dfrac{3\ln x + \ln\left(1+\frac{1}{x^3}\right)}{\ln x}}=
+    \]
+
+    \[\underset{x\to+\infty}{\lim}~e^{3+\dfrac{\ln\left(1+\frac{1}{x^3}\right)}{\ln x}}=
+    \underset{x\to+\infty}{\lim}~e^{3+\frac{0}{+\infty}}=e^3
+    \]
+\end{document}

@@ -1,11 +1,12 @@
 \documentclass{article}
 
 \usepackage{tikz, tikz-3dplot}
+\usetikzlibrary{calc}
 
 
 \begin{document}
 	\begin{center}
-		\tdplotsetmaincoords{70}{115}
+		\tdplotsetmaincoords{60}{115}
 		\begin{tikzpicture}[tdplot_main_coords]
 			\coordinate (O) at (0,0,0);
 			\coordinate (A) at (2,2,4);
@@ -67,6 +68,18 @@
 		\end{tikzpicture}
 
 		
+		\begin{tikzpicture}[scale=0.6]
+			\clip (-0.5,-0.5) rectangle (21.5,4.5);
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (0,3.4);			
+			\coordinate (C) at (21,0);			
+			\coordinate (D) at (21,4.053);
+
+			\draw[thick] (B) -- (A) -| (D);
+			\draw[thick] (B) .. controls (8, -3) and (17,2) .. (D);
+
+		\end{tikzpicture}
+
 	\end{center}
 
 	

@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\usepackage{tikz, tikz-3dplot}
+
+\begin{document}
+    \begin{center}
+        \tdplotsetmaincoords{60}{110}
+        \begin{tikzpicture}[tdplot_main_coords]
+            \draw[thick,->] (0,0,0) -- (5,0,0) node[anchor=north east]{$x$};
+            \draw[thick,->] (0,0,0) -- (0,5,0) node[anchor=north west]{$y$};
+            \draw[thick,->] (0,0,0) -- (0,0,5) node[anchor=south]{$z$};
+            
+            \tdplotdefinepoints(0,3,0)(0.2,3.2,-1.1)(-0.2,2.8,1)
+            
+            % \draw[dashed] (0,0,0) -- (\tdplotvertexx,\tdplotvertexy,0) --
+            % (\tdplotvertexx,\tdplotvertexy,\tdplotvertexz);
+
+            % \draw[dashed] (0,0,0) -- (\tdplotax,\tdplotay,0)
+            % -- (\tdplotax,\tdplotay,\tdplotaz);
+            
+            % \draw[dashed] (0,0,0) -- (\tdplotbx,\tdplotby,0)
+            % -- (\tdplotbx,\tdplotby,\tdplotbz);
+            
+            % \draw[->,red] (\tdplotvertexx,\tdplotvertexy,\tdplotvertexz)
+            % -- (\tdplotax,\tdplotay,\tdplotaz);
+            
+            % \draw[->,green!50!black] (\tdplotvertexx,\tdplotvertexy,\tdplotvertexz)
+            % -- (\tdplotbx,\tdplotby,\tdplotbz);
+            
+            % \node[anchor=east] at (\tdplotvertexx,\tdplotvertexy,\tdplotvertexz){Vertex};
+            % \node[anchor=north west] at (\tdplotax,\tdplotay,\tdplotaz){A};
+            % \node[anchor=south west] at (\tdplotbx,\tdplotby,\tdplotbz){B};
+            \tdplotdrawpolytopearc[ultra thick, dashed]{1}{anchor=west}{$$}
+        \end{tikzpicture}
+    \end{center}
+\end{document}

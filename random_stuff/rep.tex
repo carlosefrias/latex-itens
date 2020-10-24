@@ -1,0 +1,10 @@
+\documentclass[tikz,border=3.14mm]{standalone}
+
+\begin{document}
+	\begin{tikzpicture}[pics/rr/.style={code={\draw (0.2,-0.2) |- ++(-0.4,0.4)to[out=180,in=180] ++ (0,-0.4) -- cycle;}}]
+ 	\path foreach \X in {0,1,...,10}
+ 		{(0,0.4*\X) pic{rr}};
+ 	\draw (0.2,-0.2) rectangle (0.4,10*0.4+0.2);
+	\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary {calc, positioning}
+
+\begin{document}
+    \begin{center}
+        \def\angle{20}
+        \begin{tikzpicture}
+            \coordinate (O) at (0,0);
+            \coordinate (A) at (5,0);
+            \coordinate (B) at (5,5);
+            \coordinate (C) at (0,5);
+
+            \coordinate (D) at (-135:3);
+            \coordinate (E) at ($(A) + (D)$);
+            \coordinate (F) at ($(B) + (D)$);
+            \coordinate (G) at ($(C) + (D)$);
+
+            \draw[thick, dashed] (A) to [bend right=\angle] (O);
+            \draw[thick] (A) to [bend right=\angle] (B);
+            \draw[thick] (B) to [bend right=\angle] (C);
+            \draw[thick, dashed] (O) to [bend right=\angle] (C);
+
+            \draw[thick, dashed] (O) to [bend right=\angle] (D);
+            \draw[thick] (A) to [bend right=\angle] (E);
+            \draw[thick] (D) to [bend left=\angle] (E);
+            \draw[thick] (B) to [bend right=\angle] (F);
+            \draw[thick] (C) to [bend right=\angle] (G);
+            \draw[thick] (F) to [bend right=\angle] (G);
+            \draw[thick] (D) to [bend right=\angle] (G);
+            \draw[thick] (F) to [bend left=\angle] (E);
+
+            
+        \end{tikzpicture}
+    \end{center}
+\end{document}

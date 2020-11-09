@@ -1,6 +1,8 @@
 \documentclass{article}
 
 \usepackage{tikz}
+\usetikzlibrary{math}
+
 \begin{document}
     \begin{center}
         \begin{tikzpicture}
@@ -25,6 +27,5 @@
                 \draw[blue!50, rotate around y=\angle, domain=0:2] plot (\x,\x*\x, 0);
             }
         \end{tikzpicture}
-        
     \end{center}
 \end{document}

@@ -1,0 +1,34 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{math}
+
+\begin{document}
+    \begin{center}
+
+        \def\radius{2}
+        \begin{tikzpicture}
+            \draw[very thick, ->, >=latex] (0,0,0) -- (4,0,0) node[below]{\(y\)};
+            \draw[very thick, ->, >=latex] (0,0,0) -- (0,4,0) node[left]{\(z\)};
+            \draw[very thick, ->, >=latex] (0,0,0) -- (0,0,5) node[below]{\(x\)};
+            
+            \tikzmath{
+                function calcS(\u){
+                    return (1-\u^2)^0.5;
+                };
+            }
+
+            \draw[fill=black] (0,0,0) circle (2pt) node[left]{\(O\)};
+            
+            \foreach \angle in {0, 2, ..., 360}{
+                \draw[blue!50, rotate around y=\angle, domain=0:1] plot (\radius * \x, {\radius*calcS(\x)}, 0);
+                \draw[blue!50, rotate around y=\angle, domain=0:1] plot (\radius * \x, {-\radius*calcS(\x)}, 0);
+            }
+
+            \draw[fill=black] (0,0,2) circle (2pt) node[below right]{\(2\)};
+            \draw[fill=black] (2,0,0) circle (2pt) node[below right]{\(2\)};
+            \draw[fill=black] (0,2,0) circle (2pt) node[above left]{\(2\)};
+
+        \end{tikzpicture}
+    \end{center}
+\end{document}

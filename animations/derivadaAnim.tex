@@ -2,12 +2,14 @@
 
 \usepackage{tikz}
 \usepackage{animate}
+\usepackage{ifthen}
+\usepackage{amsmath}
 \usetikzlibrary{math}
 
 \begin{document}
     \begin{center}
         \begin{animateinline}[poster=1, controls={play,step,stop}]{5}
-            \multiframe{28}{ri=0+0.05}
+            \multiframe{29}{ri=0+0.05}
             {
                 \begin{tikzpicture}[
                     scale=2.5, 
@@ -19,44 +21,35 @@
                         function calcF(\x){
                             return 1+(2*\x-\x^2)*ln(\x);
                         };
+                        function declive(\x1,\y1, \x2, \y2){
+                            return (\y2-\y1) / (\x2-\x1);
+                        };
                     }
                     \draw[->,>=latex, thick] (-.5,0) -- (3,0) node[below]{\(x\)};
                     \draw[->,>=latex, thick] (0,-.5) -- (0,1.8) node[left]{\(y\)};
-                    
-                    
+                                        
                     \draw[ultra thick, blue, samples=200, domain=0.0001:2.6] 
                         plot (\x, {1+(2*\x-\x^2)*ln(\x)})
                         node[right]{\(f\)};
                     
                     \draw[orange, thick] (0.5,0.5) -- (1.5,1.5) node[above]{\(t\)};
+
+                    
                     \draw[thin, dashed] (1,{calcF(1)}) -- (1,0) node[below]{\(a\)};
+
+                    \ifthenelse{\equal{\ri}{1.4}}{}{
                     \draw[red,thick,extended line] (1,{calcF(1)}) -- ({2.4-\ri}, {calcF(2.4-\ri)});
                     \draw[thin, dashed] ({2.4-\ri}, {calcF(2.4-\ri)}) -- (2.4-\ri, 0)
                         node[below]{\(a+h\)};
                     \draw[<->, >=latex] (1,-0.3) -- (2.4-\ri,-0.3);
                     \node at ({1+0.5*(1.4-\ri)},-0.3) [below]{\(h\)};
+                    }
+                    
                     \draw[color=blue, fill=white] (0,{calcF(0.0001)}) circle(1pt);
                     \node at (0,0) [below left]{\(O\)};
+                    \node at (1.5,1.5) [above]{\(f'\left(a\right)=\underset{h\to0}{\lim}\dfrac{f\left(a+h\right)-f\left(a\right)}{h}\)};
                 \end{tikzpicture}
             }
-            \newframe{
-                \begin{tikzpicture}[scale=2.5]
-                    \path[use as bounding box] (-1,-1) rectangle (3.5,3);
-
-                    \draw[->,>=latex, thick] (-.5,0) -- (3,0) node[below]{\(x\)};
-                    \draw[->,>=latex, thick] (0,-.5) -- (0,1.8) node[left]{\(y\)};
-                    
-                    \draw[red, thick] (0.5,0.5) -- (1.5,1.5) node[above]{\(t\)};
-                    
-                    \draw[ultra thick, blue, samples=200, domain=0.0001:2.6] 
-                        plot (\x, {1+(2*\x-\x^2)*ln(\x)})
-                        node[right]{\(f\)};
-                    \draw[thin, dashed] (1,1) -- (1,0) node[below]{\(a\)};
-                   
-                    \draw[color=blue, fill=white] (0,1) circle(1pt);
-                    \node at (0,0) [below left]{\(O\)};
-                \end{tikzpicture}
-            }            
         \end{animateinline}
     \end{center}
 \end{document}

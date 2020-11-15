@@ -21,9 +21,6 @@
                         function calcF(\x){
                             return 1+(2*\x-\x^2)*ln(\x);
                         };
-                        function declive(\x1,\y1, \x2, \y2){
-                            return (\y2-\y1) / (\x2-\x1);
-                        };
                     }
                     \draw[->,>=latex, thick] (-.5,0) -- (3,0) node[below]{\(x\)};
                     \draw[->,>=latex, thick] (0,-.5) -- (0,1.8) node[left]{\(y\)};
@@ -33,21 +30,21 @@
                         node[right]{\(f\)};
                     
                     \draw[orange, thick] (0.5,0.5) -- (1.5,1.5) node[above]{\(t\)};
-
-                    
                     \draw[thin, dashed] (1,{calcF(1)}) -- (1,0) node[below]{\(a\)};
+                    \draw[thin, dashed] (1,{calcF(1)}) -- (0,{calcF(1)}) node[left]{\(f\left(a\right)\)};
 
                     \ifthenelse{\equal{\ri}{1.4}}{}{
-                    \draw[red,thick,extended line] (1,{calcF(1)}) -- ({2.4-\ri}, {calcF(2.4-\ri)});
-                    \draw[thin, dashed] ({2.4-\ri}, {calcF(2.4-\ri)}) -- (2.4-\ri, 0)
-                        node[below]{\(a+h\)};
-                    \draw[<->, >=latex] (1,-0.3) -- (2.4-\ri,-0.3);
-                    \node at ({1+0.5*(1.4-\ri)},-0.3) [below]{\(h\)};
+                        \draw[red,thick,extended line] (1,{calcF(1)}) -- ({2.4-\ri}, {calcF(2.4-\ri)});
+                        \draw[thin, dashed] ({2.4-\ri}, {calcF(2.4-\ri)}) -- (2.4-\ri, 0)
+                            node[below]{\(a+h\)};
+                        \draw[thin, dashed] (2.4-\ri,{calcF(2.4-\ri)}) -- (0, {calcF(2.4-\ri)}) node[left]{\(f\left(a+h\right)\)};
+                        \draw[<->, >=latex] (1,-0.3) -- (2.4-\ri,-0.3);
+                        \node at ({1+0.5*(1.4-\ri)},-0.3) [below]{\(h\)};
                     }
                     
                     \draw[color=blue, fill=white] (0,{calcF(0.0001)}) circle(1pt);
                     \node at (0,0) [below left]{\(O\)};
-                    \node at (1.5,1.5) [above]{\(f'\left(a\right)=\underset{h\to0}{\lim}\dfrac{f\left(a+h\right)-f\left(a\right)}{h}\)};
+                    \node at (1.5,1.8) [above]{\(f'\left(a\right)=\underset{h\to0}{\lim}\dfrac{f\left(a+h\right)-f\left(a\right)}{h}\)};
                 \end{tikzpicture}
             }
         \end{animateinline}

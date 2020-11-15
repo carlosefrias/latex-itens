@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{animate}
+\usetikzlibrary{math}
+
+\begin{document}
+    \huge
+    \begin{center}
+        Função Seno
+    \end{center}
+
+    \normalsize
+    \begin{animateinline}[poster=31, controls={play,step,stop}]{24}
+        \multiframe{361}{rtheta=0+1}
+        {
+            \begin{tikzpicture}[scale=1.2]
+                \path[use as bounding box] (-3.5,-2) rectangle (7.2,2);
+                \draw[rounded corners] (-3.5,-2) rectangle (7.2,2);
+
+                \tikzmath{
+                    function fSeno(\x){
+                        return sin(\x);
+                    };
+                    function degreeToRad(\d){
+                        return {pi}*\d/180;
+                    };
+                }
+                \draw[->,>=latex,thick] (-0.3,0) -- (7,0)node[below]{\(x\)};
+                \draw[->,>=latex,thick] (0,-1.5) -- (0,1.5)node[left]{\(y\)};
+                
+                \draw[ultra thick, blue, samples=50, domain=0:{2*pi}]
+                plot (\x, {sin(\x r)});
+
+                \node at (0,0) [below left]{\(O\)};
+                \node at ({pi/2},0) [below]{\(\frac{\pi}{2}\)};
+                \node at ({pi},0) [below]{\(\pi\)};
+                \node at ({3*pi/2},0) [below]{\(\frac{3\pi}{2}\)};
+                \node at ({2*pi},0) [below]{\(2\pi\)};
+                \draw (-2,0) circle (1cm);
+                \draw[->,>=latex,thick] (-3.5,0) -- (-0.5,0);
+                \draw[->,>=latex,thick] (-2,-1.5) -- (-2,1.5);
+                \draw[thick, rotate around={\rtheta:(-2,0)}] (-2,0) -- (-1,0);
+                \draw[->, >=stealth] (-1.6,0) arc [start angle=0, end angle=\rtheta, radius=0.4];
+                \draw[ultra thick, blue] (-2, 0) -- (-2, {fSeno(\rtheta)});
+                \draw[thin, blue, dashed] (-2, {fSeno(\rtheta)}) -- ({degreeToRad(\rtheta)}, {fSeno(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
+                \draw[fill=black] ({degreeToRad(\rtheta)}, {fSeno(\rtheta)}) circle (1pt);
+            \end{tikzpicture}
+        }
+    \end{animateinline}
+\end{document}

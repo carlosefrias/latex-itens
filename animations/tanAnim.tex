@@ -50,33 +50,14 @@
                 \draw[thin, dashed, brown] ($(D)!(P)!(E)$) -- (P) -- ($(B)!(P)!(C)$);
                 \draw[->, >=stealth] (-1.6,0) arc [start angle=0, end angle=\rtheta, radius=0.4];
                 \draw[thick] (-1,-3)--(-1,3);
-                %TODO improve this conditions...
-                \ifthenelse{\rtheta < 80}
-                {
+                \ifthenelse{\equal{\rtheta}{90} \OR \equal{\rtheta}{270}}
+                {}{
                     \coordinate (Q) at (-1,{tan(\rtheta)});
                     \draw[thick] (A) -- (Q);
                     \draw[ultra thick, brown] (-1,0) -- (Q);
                     \draw[thin, brown, dashed] (Q) -- ({degreeToRad(\rtheta)}, {tan(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
                     \draw[fill=black] ({degreeToRad(\rtheta)}, {tan(\rtheta)}) circle (1pt);
-                }{}
-
-                \ifthenelse{\rtheta < 260 \AND \rtheta > 100}
-                {   
-                    \coordinate (Q) at (-1,{tan(\rtheta)});
-                    \draw[thick] (A) -- (Q);
-                    \draw[ultra thick, brown] (-1,0) -- (Q);
-                    \draw[thin, brown, dashed] (Q) -- ({degreeToRad(\rtheta)}, {tan(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
-                    \draw[fill=black] ({degreeToRad(\rtheta)}, {tan(\rtheta)}) circle (1pt);
-                }{}
-
-                \ifthenelse{\rtheta > 280}
-                {
-                    \coordinate (Q) at (-1,{tan(\rtheta)});
-                    \draw[thick] (A) -- (Q);
-                    \draw[ultra thick, brown] (-1,0) -- (Q);
-                    \draw[thin, brown, dashed] (Q) -- ({degreeToRad(\rtheta)}, {tan(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
-                    \draw[fill=black] ({degreeToRad(\rtheta)}, {tan(\rtheta)}) circle (1pt);
-                }{}
+                }
             \end{tikzpicture}
         }
     \end{animateinline}

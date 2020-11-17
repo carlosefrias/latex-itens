@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{beamer}
 
 \usepackage{tikz}
 \usepackage{animate}
@@ -14,14 +14,11 @@
     \begin{animateinline}[poster=31, controls={play,step,stop}]{24}
         \multiframe{361}{rtheta=0+1}
         {
-            \begin{tikzpicture}[scale=1.2]
+            \begin{tikzpicture}
                 \path[use as bounding box] (-3.5,-2) rectangle (7.2,2);
                 \draw[rounded corners] (-3.5,-2) rectangle (7.2,2);
 
                 \tikzmath{
-                    function fSeno(\x){
-                        return sin(\x);
-                    };
                     function degreeToRad(\d){
                         return {pi}*\d/180;
                     };
@@ -49,9 +46,9 @@
                 \draw[thick] (A) -- (P);
                 \draw[thin, dashed, blue] ($(D)!(P)!(E)$) -- (P) -- ($(B)!(P)!(C)$);
                 \draw[->, >=stealth] (-1.6,0) arc [start angle=0, end angle=\rtheta, radius=0.4];
-                \draw[ultra thick, blue] (-2, 0) -- (-2, {fSeno(\rtheta)});
-                \draw[thin, blue, dashed] (P) -- ({degreeToRad(\rtheta)}, {fSeno(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
-                \draw[fill=black] ({degreeToRad(\rtheta)}, {fSeno(\rtheta)}) circle (1pt);
+                \draw[ultra thick, blue] (-2, 0) -- (-2, {sin(\rtheta)});
+                \draw[thin, blue, dashed] (P) -- ({degreeToRad(\rtheta)}, {sin(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
+                \draw[fill=black] ({degreeToRad(\rtheta)}, {sin(\rtheta)}) circle (1pt);
             \end{tikzpicture}
         }
     \end{animateinline}

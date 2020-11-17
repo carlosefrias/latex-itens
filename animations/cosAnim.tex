@@ -18,9 +18,6 @@
                 \draw[rounded corners] (-3.5,-2) rectangle (7.2,2);
 
                 \tikzmath{
-                    function fCosseno(\x){
-                        return cos(\x);
-                    };
                     function degreeToRad(\d){
                         return {pi}*\d/180;
                     };
@@ -49,12 +46,12 @@
                 \draw[thick] (A) -- (P);
                 \draw[thin, dashed, red] ($(D)!(P)!(E)$) -- (P) -- ($(B)!(P)!(C)$);
                 \draw[->, >=stealth] (-1.6,0) arc [start angle=0, end angle=\rtheta, radius=0.4];
-                \coordinate (Q) at ($(A) + ({fCosseno(\rtheta)},0)$);
-                \coordinate (R) at ($({-2+fCosseno(\rtheta)}, {fCosseno(\rtheta)})$);
+                \coordinate (Q) at ($(A) + ({cos(\rtheta)},0)$);
+                \coordinate (R) at ($({-2+cos(\rtheta)}, {cos(\rtheta)})$);
                 \draw[ultra thick, red] (A) -- (Q) -- (R);
-                \draw[thin, red] (Q) circle [radius={abs(fCosseno(\rtheta))}];
-                \draw[thin, red, dashed] (R) -- ({degreeToRad(\rtheta)}, {fCosseno(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
-                \draw[fill=black] ({degreeToRad(\rtheta)}, {fCosseno(\rtheta)}) circle (1pt);
+                \draw[thin, red] (Q) circle [radius={abs(cos(\rtheta))}];
+                \draw[thin, red, dashed] (R) -- ({degreeToRad(\rtheta)}, {cos(\rtheta)}) -- ({degreeToRad(\rtheta)},0);
+                \draw[fill=black] ({degreeToRad(\rtheta)}, {cos(\rtheta)}) circle (1pt);
             \end{tikzpicture}
         }
     \end{animateinline}

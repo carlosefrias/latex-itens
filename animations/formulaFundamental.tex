@@ -1,0 +1,63 @@
+\documentclass{beamer}
+\usepackage{tkz-euclide}
+\usepackage{animate}
+\usepackage{ifthen}
+
+\begin{document}
+    \huge
+    \begin{center}
+        \[\sin^2 \theta + \cos^2 \theta = 1\]
+    \end{center}
+
+    \normalsize
+    \begin{center}
+        \begin{animateinline}[poster=first, controls={play,step,stop}]{24}
+            \multiframe{361}{rtheta=0+1}
+            {
+                \begin{tikzpicture}[scale=1.5]
+                    \path[use as bounding box] (-3.5,-2) rectangle (3.5,2);
+                    \draw[rounded corners] (-3.5,-2) rectangle (3.5,2);
+                    \tkzDefPoints{0/0/O,1.5/0/Xmax,-1.5/0/Xmin,0/1.5/Ymax,0/-1.5/Ymin}
+                    \tkzDefPoint(\rtheta:1){P}
+                    
+                    \tkzDefPointBy[projection=onto Xmin--Xmax](P)\tkzGetPoint{Px}
+
+                    \ifthenelse{\rtheta<90 \OR \equal{\rtheta}{90}}{
+                        \tkzDrawSquare[fill=brown!30](Px,O)
+                        \tkzDrawSquare[fill=blue!30](P,Px)
+                        \tkzDrawSquare[fill=red!50](O,P)
+                    }{}
+
+                    \ifthenelse{\rtheta>90 \AND \rtheta<180}{
+                        \tkzDrawSquare[fill=brown!30](O,Px)
+                        \tkzDrawSquare[fill=blue!30](Px,P)
+                        \tkzDrawSquare[fill=red!50](P,O)
+                    }{}
+
+                    \ifthenelse{\rtheta>180 \AND \rtheta<270}{
+                        \tkzDrawSquare[fill=brown!30](Px,O)
+                        \tkzDrawSquare[fill=blue!30](P,Px)
+                        \tkzDrawSquare[fill=red!50](O,P)
+                    }{}
+
+                    \ifthenelse{\rtheta>270 \OR \equal{\rtheta}{270}}{
+                        \tkzDrawSquare[fill=brown!30](O,Px)
+                        \tkzDrawSquare[fill=blue!30](Px,P)
+                        \tkzDrawSquare[fill=red!50](P,O)
+                    }{}
+
+                    \draw[thin,gray] (0,0) circle (1cm);
+
+                    \tkzDrawArc[R,->,>=stealth](O,0.2 cm)(0,\rtheta)
+
+                    \node at (1,0) [below right] {\(1\)};
+                    \node at (1.5,0) [below] {\(x\)};
+                    \node at (0,1) [above left] {\(1\)};
+                    \node at (0,1.5) [left] {\(y\)};
+                    \tkzDrawSegment[->,>=latex,thick](Xmin,Xmax)
+                    \tkzDrawSegment[->,>=latex,thick](Ymin,Ymax)
+                \end{tikzpicture}
+            }
+        \end{animateinline}
+    \end{center}
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass{article}
+
+\usepackage{tikz}
+
+\begin{document}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[color=red, thick, domain=0:2*pi,smooth,variable=\t, samples=300] 
+                plot ({4*cos(\t r)-cos(4*\t r)},{4*sin(\t r)-sin(4*\t r)});
+            \draw[thick, ->, >=latex] (-5.2,0) -- (5.2,0) node[below]{\(x\)};
+            \draw[thick, ->, >=latex] (0,-5.2) -- (0,5.2) node[left]{\(y\)};        
+    
+        \end{tikzpicture}    
+    \end{center}
+
+\end{document}

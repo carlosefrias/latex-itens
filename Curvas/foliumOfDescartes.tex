@@ -1,0 +1,16 @@
+\documentclass{article}
+
+\usepackage{tikz}
+
+\begin{document}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[color=red, thick, domain=0:10,smooth,variable=\p, samples=300] 
+                plot ({3*\p/(1+\p^3)},{3*\p^2/(1+\p^3)});
+            \draw[thick, ->, >=latex] (-4,0) -- (4,0) node[below]{\(x\)};
+            \draw[thick, ->, >=latex] (0,-4) -- (0,4) node[left]{\(y\)};
+        \end{tikzpicture}
+    \end{center}
+
+\end{document}

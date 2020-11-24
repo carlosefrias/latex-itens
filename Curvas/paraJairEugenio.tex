@@ -39,7 +39,7 @@
         %Função polar
         \begin{tikzpicture}
             \draw[color=red, thick, domain=0:360,smooth,samples=300, variable=\t] 
-            plot ({\t}:{3*abs(cos(2*\t))}) node[above right]{\(\rho=3|\sin\left(2\theta\right)|\)};
+            plot ({\t}:{3*abs(cos(2*\t))}) node[above right]{\(\rho=3|\cos\left(2\theta\right)|\)};
 
             \draw[->,>=stealth](-4,0) -- (4,0) node[below]{\(x\)};
             \draw[->,>=stealth](0,-3) -- (0,3) node[left]{\(y\)};

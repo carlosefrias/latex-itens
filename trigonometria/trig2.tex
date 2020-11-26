@@ -1,0 +1,106 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{tkz-euclide}
+\usepackage{enumitem}
+
+\newlist{questoes}{enumerate}{4}
+\setlist[questoes]{label*=\textbf{\arabic*.}}
+
+\newlist{emulti}{enumerate}{1}
+\setlist[emulti]{label=\textbf{(\Alph*)}}
+
+\author{Carlos Frias}
+
+\begin{document}
+	
+	\begin{questoes}
+		\item Na figura está representado, em referencial o.n. \(xOy\) a circunferência trigonométrica, uma reta \(r\) e uma região a sombreado. 
+		
+		Sabe-se que:
+		
+		\begin{tabular} {l r}
+			\begin{minipage}{0.5\textwidth}
+				
+				\begin{itemize}
+					\item \(O\) é a origem do referencial
+                    \item \(P\) é o ponto de coordenadas \(\left(1,0\right)\)
+                    \item \(r\) é a reta definida por \(x=1\)
+					\item \(Q\) desloca-se sobre a circunferência ao longo do primeiro quadrante
+					
+					\item \(\theta\) é a amplitude, em radianos, do ângulo \(POQ\), com \(\theta \in \left]0, \frac{\pi}{2}\right[\)
+					
+					\item \(R\) acompanha o movimento do ponto \(Q\) deslocando-se sobre a circunferência ao longo do quarto quadrante de modo que o ângulo \(ROQ\) é um ângulo reto
+					
+					\item os pontos \(S\) e \(T\) são os pontos de interseção da reta \(r\) com as semirretas \(\dot{O}Q\) e \(\dot{O}R\), respectivamente.  				
+				\end{itemize}
+ 
+			\end{minipage}
+		
+			\begin{minipage}{0.5\textwidth}
+                \def\angle{55}
+                \begin{center}
+					\begin{tikzpicture}[scale=2.5]
+					\tkzInit[xmin=-1.5, xmax=1.5, ymin=-1.5, ymax=1.5]
+                    \tkzDefPoints{1.5/0/X2, -1.5/0/X1, 0/1.5/Y2, 0/-1.5/Y1, 0/0/O, 1/0/P, 1/-1.5/R1, 1/1.7/R2}
+                    
+                    \tkzDefPoint(\angle:1){Q}
+                    \tkzInterLL(O,Q)(R1,R2)\tkzGetPoint{Q1}
+                    \tkzDefPoint(\angle-90:1){R}
+                    \tkzInterLL(O,R)(R1,R2)\tkzGetPoint{R3}
+                    \tkzDrawPolygon[fill=gray!30](O,R3,Q1)
+					\tkzDrawCircle[fill=white](O,P)
+                    
+                    \tkzDrawSegments[dashed](O,Q O,R3)
+                    \draw[->,>=stealth] (0.4,0) arc [start angle=0, end angle=\angle, radius=0.4cm];
+                    \node at (\angle/2:0.4)[right]{\(\theta\)};
+                    \tkzMarkRightAngle[size=0.1](R3,O,Q)
+                    \tkzDrawSegments[thick, ->, >=stealth](X1,X2 Y1,Y2)
+                    \tkzDrawSegment[thick](R2,R1)
+                    \tkzLabelPoints[below left](O)
+                    \node at (Q) [above]{\(Q\)};
+                    \node at (P) [below right]{\(P\)};
+                    \node at (Q1) [above right]{\(T\)};
+                    \node at (R) [below]{\(R\)};
+                    \node at (R3) [below right]{\(S\)};
+                    \node at (R1) [right]{\(r\)};
+                    \tkzLabelPoint(X2){\(x\)}
+					\tkzLabelPoint(Y2){\(y\)}
+					\end{tikzpicture}
+				\end{center}
+			\end{minipage}
+		\end{tabular}
+		
+		
+		Seja \(A\) a função que a cada valor de \(\theta\) faz corresponder o valor da área da região a sombreado. 
+			
+	\begin{questoes}
+		
+		\item Mostre que \(A\left(\theta\right)=\dfrac{1}{\sin\left(2\theta\right)}-\dfrac{\pi}{4}\), com \(\theta\in\left]0, \frac{\pi}{2}\right[\).
+        
+        (11º Ano) \textbf{Nota:} \(\sin\left(2\theta\right)=2\sin\theta\cos\theta\)
+        
+		\item Determine, sem utilizar a calculadora, o(s) valor(es) de \(\theta\) para o(s) qual(is) a área da região a sombreado é igual a \(\dfrac{8\sqrt{3}-3\pi}{12}\).
+        
+        \item (12º Ano) Determine, por processos analíticos, o valor de \(\theta\) para o qual é mínima a área da região a sombreado.
+        
+        \item Qual é conjunto de valores de \(\theta\) para os quais a área da região a sombreado é menor que a área do triângulo [OPQ]?
+
+        Recorra às capacidades gráficas da sua calculadora para resolver esta questão.
+
+        Na sua resposta deve:
+        \begin{itemize}
+            \item Formular uma inequação cuja solução responde ao problema
+            \item Representar graficamente a(s) função(ões) que lhe permitem obter a resposta ao problema
+            \item Assinalar o(s) ponto(s) relevante(s), indicando a(s) sua(s) abcissa(s) com aproximação às centésimas
+            \item Indicar o conjunto solução utilizando a notação de números reais
+        \end{itemize}
+	\end{questoes}
+\end{questoes}
+\begin{flushright}
+	Autor: Carlos Frias
+\end{flushright}
+
+\end{document}

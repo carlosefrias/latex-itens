@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+\usepackage{chessboard}
+\usepackage{skak}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\newlist{itens}{enumerate}{4}
+\setlist[itens]{label*=\textbf{\arabic*.}}
+
+\newlist{emulti}{enumerate}{1}
+\setlist[emulti]{label=\textbf{(\Alph*)}}
+
+\begin{document}
+    \begin{itens}
+        \bigskip
+        \item Num jogo de xadrez, cada jogador tem na sua posse dezasseis peças: oito peões iguais, duas torres iguais, dois cavalos iguais, dois bispos iguais, um rei e uma rainha.
+
+        Um dos jogadores tem as peças brancas e o outro tem as peças pretas.
+
+        As peças dispoem-se nas duas primeiras filas mais próximas ao jogador. Na segunda fila ficam os peões e na primeira fila ficam as restantes peças na seguinte forma:
+        \begin{itemize}
+            \item As torres ficam nos extremos
+            \item Os cavalos ficam na segunda e penúltima posições
+            \item Os bispos ficam na terceira e ante-penúltima posições
+            \item O rei e a rainha ficam no centro, ficando a rainha na casa da sua cor (rainha branca em casa branca/rainha preta em casa preta)
+        \end{itemize}
+
+        \begin{center}
+            \setchessboard{showmover=false}
+            \newgame
+            \chessboard
+        \end{center}
+
+        Colocando ao acaso as oito peças brancas que não são peões na primeira fila, uma por cada casa, qual é a probabilidade de elas ficarem colocadas na posição correta?
+
+
+        \begin{multicols}{4}
+            \begin{emulti}
+                \item \(\dfrac{1}{^8C_2\times^6C_2\times^4A_2}\)
+                \item  \(\dfrac{2!}{8!}\)
+                \item \(\dfrac{6!}{8!}\)
+                \item \(\dfrac{2!}{^8C_2\times^6C_2\times^4A_2}\)
+            \end{emulti}
+        \end{multicols}
+
+        \bigskip
+
+        \bigskip
+    \end{itens}
+\end{document}

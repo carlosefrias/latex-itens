@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+
+\usetikzlibrary{math}
+\begin{document}
+
+    \begin{center}
+        \Huge
+        Fermat's Spiral
+        \bigskip
+        \normalsize
+        
+        
+
+
+        Polar equation:
+        \[r^2=\dfrac{a^2}{\theta}\]
+        \begin{tikzpicture}[scale=1]
+            \tikzmath{
+                function toRadians(\t){
+                    return \t * pi / 180.0;
+                };
+                function toDegrees(\t){
+                    return \t * 180.0 / pi;
+                };
+            }
+            \draw[color=blue, ultra thick, domain=0.001:2*pi,smooth,variable=\t, samples=300] 
+                plot ({toDegrees(\t)}:{1/\t)});
+    
+            \draw[thick, ->, >=latex] (-5,0) -- (1.2,0) node[below]{\(x\)};
+            \draw[thick, ->, >=latex] (0,-3) -- (0,3) node[left]{\(y\)};        
+            \node at (0,0) [below left]{\(O\)};
+        \end{tikzpicture}    
+    \end{center}
+
+\end{document}

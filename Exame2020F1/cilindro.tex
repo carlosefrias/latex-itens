@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{intersections, calc}
 
 \begin{document}
 	\begin{center}
@@ -12,18 +12,10 @@
 		\def\yA{3}
 		\def\xB{4}
 		\begin{tikzpicture}
-			%drawing the axis
-			\draw[thick, densely dashed]  (0,0) -- (-135:2);
-			\draw[thick, ->, >=stealth]  (-135:2) -- (-135:4) node[below right] {\(x\)};
-			\draw[thick, densely dashed] (0,0) -- (3.8,0);
-			\draw[thick, ->, >=stealth] (3.95,0) -- (6,0) node[below] {\(y\)};
-			\draw[thick, densely dashed] (0,0) -- (0,0.3);
-			\draw[thick, ->, >=stealth] (0,0.3) -- (0,3) node[left] {\(z\)};
-			
 			%defining some points
 			\coordinate (O) at (0,0);
 			\coordinate (A) at (\yA,0);
-			\coordinate (B) at (-135:\xB/2);
+			\coordinate (B) at (0,0,\xB);
 			%defining points on the bases of the cylinder
 			\coordinate [rotate around={\rotElipse:(A)}] (P) at ($(A) + (-90:\xRadius cm and \yRadius cm)$);
 			\coordinate [rotate around={\rotElipse:(A)}] (Q) at ($(A) + (90:\xRadius cm and \yRadius cm)$);
@@ -36,8 +28,19 @@
 			
 			%drawing the bases
 			\draw[ultra thick, rotate around={\rotElipse:(B)}] (B) ellipse (\xRadius cm and \yRadius cm);
-			\draw[ultra thick, rotate around={\rotElipse:(A)}] (P) arc (-90:90:\xRadius cm and \yRadius cm);
+			\draw[ultra thick, rotate around={\rotElipse:(A)}, name path=arco] (P) arc (-90:90:\xRadius cm and \yRadius cm);
 			\draw[ultra thick, loosely dotted, rotate around={\rotElipse:(A)}] (Q) arc (90:270:\xRadius cm and \yRadius cm);
+			
+			%drawing the axis
+			\draw[thick, densely dashed]  (0,0,0) -- (B);
+			\draw[thick, ->, >=stealth]  (B) -- (0,0,7) node[below right] {\(x\)};
+			\draw[draw=none, name path=eixoY] (0,0)--(6,0);
+			\draw[thick, densely dashed, name intersections={of=eixoY and arco, by={a}}] (0,0) -- (a);
+			\draw[thick,  ->, >=stealth] (a) -- (5,0) node [below]{$y$};
+			\coordinate (Z1) at (intersection of O--(0,3) and C--Q);
+			
+			\draw[thick, densely dashed] (0,0) -- (Z1);
+			\draw[thick, ->, >=stealth] (Z1) -- (0,3) node[left] {\(z\)};
 			
 			%drawing and labeling points
 			\draw (O) node [below right]{\(O\)};

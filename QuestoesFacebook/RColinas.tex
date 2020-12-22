@@ -13,7 +13,7 @@
         % definir pontos da mediatriz de [AB]
         \coordinate (M) at ($0.5*(A)+0.5*(B)$);
         \coordinate[rotate around={90:(M)}] (P) at ($(B)$);
-        \coordinate (P1) at ($(M) + 3*(M)-3*(P)$);
+        \coordinate (P1) at ($(M) + 2.5*(M)-2.5*(P)$);
 
         %sombreado
         \begin{scope}
@@ -23,6 +23,7 @@
 
         % desenhar circulo e retas
         \draw[thick] (O) circle ({sqrt(5)});
+        
         \draw[thick] (A) -- (B);
         \draw[thick] (P1) -- (P) node[below left]{$r$};
         

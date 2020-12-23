@@ -1,0 +1,33 @@
+\documentclass[border=1cm]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+\begin{document}
+    \begin{tikzpicture}
+        \coordinate[label=above:{$A$}] (A) at (0,10,3);
+        \coordinate[label=above right:{$B$}] (B) at (3,10,7);
+        \coordinate[label=above:{$C$}] (C) at ({3+20*sqrt(85)/17},10,{7-5*sqrt(85)/17});
+        \coordinate[label=above left:{$D$}] (D) at ($(C)+(A)-(B)$);
+        \coordinate[label=below:{$O$}] (O) at (0,0,0);
+        \coordinate[label=below:{$V$}] (V) at ({1.5+10*sqrt(85)/34},0,{5-5*sqrt(85)/34});
+
+        \draw[ultra thick] (A)--(V)--(C)--(D)--cycle;
+        \draw[ultra thick] (A)--(B)--(C);
+        \draw[ultra thick] (B)--(V);
+        \draw[thick, dashed] (D)--(V);
+        
+        
+        \coordinate (Y1) at (intersection of (0,0)--(12,0) and A--V);
+        \coordinate (Y2) at (intersection of (0,0)--(12,0) and C--V);
+        \draw[thick, dashed] (Y1)--(Y2);
+        \draw[thick] (0,0)--(Y1);
+        \draw[->,>=stealth,thick] (Y2)--(12,0)node[below]{$y$};
+        \coordinate (Z1) at (intersection of (0,0)--(0,12) and V--A);
+        \coordinate (Z2) at (intersection of (0,0)--(0,12) and D--A);
+        \draw[thick, dashed] (Z1)--(Z2);
+        \draw[thick] (0,0)--(Z1);
+        \draw[->,>=stealth,thick] (Z2)--(0,12) node[left]{$z$};
+
+        \draw[->,>=stealth,thick] (0,0)--(0,0,10)node[below right]{$x$};
+    \end{tikzpicture}
+\end{document}

@@ -1,21 +1,27 @@
 \documentclass[border=1cm]{standalone}
 
-
 \usepackage{tikz}
 \usetikzlibrary{intersections}
 
 \begin{document}
+    % definindo raio do circulo que contém os vértices de uma das bases
     \def\r{2}
+    % definindo altura do prisma
     \def\h{3.5}
     \begin{tikzpicture}
+        % rodar prisma 60º em torno de y (Oz), 25º em torno de x (Oz) e translação segundo o vetor (-0.5, 1.2,1.5)
         \begin{scope}[shift={(-.5,1.2,1.5)},rotate around y=60, rotate around x=25]
+            % definindo as coordenadas dos pontos das bases
             \foreach \i in {0,...,5}{
+                % ponto da base inferior
                 \coordinate (P\i) at (60*\i:\r);
+                % ponto da base superior
                 \coordinate[shift={(0,0,\h)}] (Q\i) at (60*\i:\r);
             }
-            % plano feito a olhometro...
+            % plano PQR (cinzento) feito a olho
             \filldraw[gray!20] (4,3)--(-3,4)--(-4,-3)--(3,-4);
 
+            % traçando as arestas do prisma
             \draw[ultra thick, fill=white] (P1)--(P2)--(P3)--(P4)--(Q4)--(Q5)--(Q0)--(Q1)--cycle;
             \draw[ultra thick] (Q1)--(Q2)--(P2);
             \draw[ultra thick] (Q4)--(Q3)--(P3);
@@ -23,19 +29,26 @@
             \draw[thick, dashed] (P1)--(P0)--(Q0);
             \draw[thick, dashed] (P4)--(P5)--(Q5);
             \draw[thick, dashed] (P0)--(P5);
+            % Colocar labels nalguns pontos
             \node[left] at (P4){$P$};
             \node[left] at (P3){$Q$};
             \node[above] at (P2){$R$};
             \node[below] at (Q4){$S$};
         \end{scope}
         \node[below] at (0,0){$O$};
+        % achar interseção de Oy com aresta da base do prisma
         \coordinate (Yi) at (intersection of (0,0)--(4,0) and Q0--Q1);
+        % traçar eixo Oy
         \draw[densely dotted, thick] (0,0) -- (Yi);
         \draw[->,>=stealth, thick] (Yi) -- (4,0) node[below]{$y$};
+        % achar interseção de Oz com aresta da base do prisma
         \coordinate (Zi) at (intersection of (0,0)--(0,4) and P1--P2);
+        % traçar eixo Oz
         \draw[densely dotted, thick] (0,0) -- (Zi);
         \draw[->,>=stealth, thick] (Zi) -- (0,4) node[left]{$z$};
+        % achar interseção de Ox com aresta da base do prisma
         \coordinate (Xi) at (intersection of (0,0)--(0,0,6) and P4--Q4);
+        % traçar eixo Ox
         \draw[densely dotted, thick] (0,0) -- (Xi);
         \draw[->,>=stealth, thick] (Xi) -- (0,0,8) node[below right]{$x$};
     \end{tikzpicture}

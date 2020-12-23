@@ -1,0 +1,42 @@
+\documentclass[border=1cm]{standalone}
+
+
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+
+\begin{document}
+    \def\r{2}
+    \def\h{3.5}
+    \begin{tikzpicture}
+        \begin{scope}[shift={(-.5,1.2,1.5)},rotate around y=60, rotate around x=25]
+            \foreach \i in {0,...,5}{
+                \coordinate (P\i) at (60*\i:\r);
+                \coordinate[shift={(0,0,\h)}] (Q\i) at (60*\i:\r);
+            }
+            % plano feito a olhometro...
+            \filldraw[gray!20] (4,3)--(-3,4)--(-4,-3)--(3,-4);
+
+            \draw[ultra thick, fill=white] (P1)--(P2)--(P3)--(P4)--(Q4)--(Q5)--(Q0)--(Q1)--cycle;
+            \draw[ultra thick] (Q1)--(Q2)--(P2);
+            \draw[ultra thick] (Q4)--(Q3)--(P3);
+            \draw[ultra thick] (Q2)--(Q3);
+            \draw[thick, dashed] (P1)--(P0)--(Q0);
+            \draw[thick, dashed] (P4)--(P5)--(Q5);
+            \draw[thick, dashed] (P0)--(P5);
+            \node[left] at (P4){$P$};
+            \node[left] at (P3){$Q$};
+            \node[above] at (P2){$R$};
+            \node[below] at (Q4){$S$};
+        \end{scope}
+        \node[below] at (0,0){$O$};
+        \coordinate (Yi) at (intersection of (0,0)--(4,0) and Q0--Q1);
+        \draw[densely dotted, thick] (0,0) -- (Yi);
+        \draw[->,>=stealth, thick] (Yi) -- (4,0) node[below]{$y$};
+        \coordinate (Zi) at (intersection of (0,0)--(0,4) and P1--P2);
+        \draw[densely dotted, thick] (0,0) -- (Zi);
+        \draw[->,>=stealth, thick] (Zi) -- (0,4) node[left]{$z$};
+        \coordinate (Xi) at (intersection of (0,0)--(0,0,6) and P4--Q4);
+        \draw[densely dotted, thick] (0,0) -- (Xi);
+        \draw[->,>=stealth, thick] (Xi) -- (0,0,8) node[below right]{$x$};
+    \end{tikzpicture}
+\end{document}

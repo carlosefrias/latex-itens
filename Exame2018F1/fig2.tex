@@ -18,8 +18,10 @@
                 % ponto da base que contem S
                 \coordinate[shift={(0,0,\h)}] (Q\i) at (60*\i:\r);
             }
+            \coordinate (T) at (45:2.2*\r);
+            \coordinate (R) at (135:2.2*\r);
             % plano PQR (cinzento)
-            \filldraw[gray!20] (45:2.2*\r)--(135:2.2*\r)--(225:2.2*\r)--(315:2.2*\r);
+            \filldraw[gray!20] (T)--(R)--(225:2.2*\r)--(315:2.2*\r);
 
             % traçando as arestas do prisma
             \draw[ultra thick, fill=white] (P1)--(P2)--(P3)--(P4)--(Q4)--(Q5)--(Q0)--(Q1)--cycle;
@@ -38,7 +40,7 @@
         \draw[densely dotted, thick] (0,0) -- (Yi);
         \draw[->,>=stealth, thick] (Yi) -- (4,0) node[below]{$y$};
         % achar interseção de Oz com aresta da base do prisma
-        \coordinate (Zi) at (intersection of (0,0)--(0,4) and P1--P2);
+        \coordinate (Zi) at (intersection of (0,0)--(0,4) and T--R);
         % traçar eixo Oz
         \draw[densely dotted, thick] (0,0) -- (Zi);
         \draw[->,>=stealth, thick] (Zi) -- (0,4) node[left]{$z$};

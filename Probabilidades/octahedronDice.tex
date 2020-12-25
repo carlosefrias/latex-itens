@@ -1,0 +1,28 @@
+\documentclass[border=1cm]{standalone}
+
+
+\usepackage{tikz}
+\usetikzlibrary{3d}
+
+% https://tex.stackexchange.com/questions/353357/tikz-how-to-define-new-2d-canvas
+\makeatletter
+\tikzoption{canvas is plane}[]{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+    {
+        \def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+        \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+        \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+        \tikz@canvas@is@plane
+    }
+\makeatother
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{scope}
+            
+        \end{scope}
+        \draw[->] (0,0)--(3,0)node[below]{$x$};
+        \draw[->] (0,0)--(0,3)node[left]{$y$};
+        \draw[->] (0,0)--(0,0,3)node[below right]{$z$};
+    \end{tikzpicture}
+\end{document}

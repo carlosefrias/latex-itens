@@ -1,5 +1,6 @@
 \documentclass[border=1cm]{standalone}
 
+\usepackage{mathptmx}
 \usepackage{tikz,tkz-euclide}
 \usetikzlibrary{3d,calc}
 
@@ -17,7 +18,7 @@
 
 \begin{document}
     \begin{tikzpicture}
-        \begin{scope}
+        \begin{scope}[rotate around z=20, rotate around y=20]
             \coordinate (A) at (2,0);
             \coordinate (B) at (0,0,-2);
             \coordinate (C) at (-2,0);
@@ -33,7 +34,7 @@
                 \tkzDefTriangleCenter[centroid](P1,P2,P3)
                 \tkzGetPoint{M}
                 \Huge
-                \node at (M) [transform shape] {\reflectbox{4}};
+                \node at (M) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 4}};
                 \normalsize
             \end{scope}
                 

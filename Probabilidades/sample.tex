@@ -1,0 +1,50 @@
+%found on https://tex.stackexchange.com/questions/353357/tikz-how-to-define-new-2d-canvas
+
+\documentclass[a4paper]{article}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,3d,calc}
+\makeatletter
+\tikzoption{canvas is plane}[]{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+{
+    \def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+    \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+    \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+    \tikz@canvas@is@plane
+}
+\makeatother  
+
+\begin{document}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[line width=0.3mm,->,>={latex}](0,0,0)--(8,0,0)node[right]{\emph{y}};
+            \draw[line width=0.3mm,->,>={latex}](0,0,0)--(0,6,0)node[above]{\emph{z}};
+            \draw[line width=0.3mm,->,>={latex}](0,0,0)--(0,0,8)node[below left=-3pt]{\emph{x}};
+            \draw[line width=0.7mm,-stealth](0,0)--(2,0)node[pos=0.9, above]{$\vec{u}_y$};
+            \draw[line width=0.7mm,-stealth](0,0)--(0,2)node[pos=0.8, left]{$\vec{u}_z$};
+            \draw[line width=0.7mm,-stealth](0,0,0)--(0,0,2)node[pos=0.8, above left=-3pt]{$\vec{u}_x$};
+            \node at (0,0,0) [left]{$O$};
+            \draw[thick,->,>={stealth}](0,0)--(6,0,4)node[below]{$M'$}node[pos=0.6,above,sloped]{$r$};
+            \draw[dashed,thick](6,0,4)--(6,4,4);
+            \draw[dotted] (0,0,0) grid (7,5.5,0);
+            \begin{scope}[canvas is yz plane at x=0]
+                \draw[dotted] (0,0) grid (5.5,7.5);
+            \end{scope}
+            \begin{scope}[canvas is xz plane at y=0]
+                \draw[dotted] (0,0) grid (7.5,7.5);
+            \end{scope}
+            
+            \draw[line width=0.7mm,-stealth, red](6,4,4)--({6+3/sqrt(2)},4,{4+2/sqrt(2)})node[pos=0.6, below]{$\vec{u}_r$};
+            \draw[line width=0.7mm,-stealth, green](6,4,4)--($(6,4,4)+({2/sqrt(2)},0,{-3/sqrt(2)})$)node[pos=0.8, below]{$\vec{u}_\theta$};
+            \draw[line width=0.7mm,-stealth, blue](6,4,4)--(6,6,4)node[pos=0.8, right]{$\vec{u}_z$};
+            \draw[thick,->,>={stealth}](0,0)--(6,4,4)node[below=5pt,circle,fill=white,inner sep=1pt]{$M$};
+            
+            \begin{scope}[canvas is plane={O(6,4,4)x({6+3/sqrt(2)},4,{4+2/sqrt(2)})y(6,6,4)}]
+                \draw[fill=blue] (0.1,0.1) rectangle (0.5,0.5);
+            \end{scope}
+        \end{tikzpicture}
+    \end{center} 
+
+\end{document}

@@ -6,21 +6,27 @@
 
 \begin{document}
     \begin{tikzpicture}
+        % rodar cubo 30 em torno de z e 30 graus em torno de y
         \begin{scope}[rotate around z=-30, rotate around y=-30]
+            % definir os vértices do cubo
             \foreach \i in {0,...,3}{
                 \coordinate[shift={(0,0,-2)}] (P\i) at (45+90*\i:{2*sqrt(2)});
                 \coordinate[shift={(0,0,2)}] (Q\i) at (45+90*\i:{2*sqrt(2)});
             }
+            % desenhar algumas arestas do cubo
             \draw[ultra thick, fill=gray!20] (P0)--(P1)--(Q1)--(Q2)--(Q3)--(P3)--cycle (Q1)--(Q0)--(P0) (Q0)--(Q3);
-            \begin{scope}[canvas is zy plane at x=2,fill]
+            % desenhar um ponto no plano x=2
+            \begin{scope}[canvas is zy plane at x=2]
                 \draw[fill=black] (0,0) circle (8pt);
             \end{scope}
+            % desenhar quatro pontos no plano z=2
             \begin{scope}[canvas is xy plane at z=2]
                 \draw[fill=black] (45:1.5) circle (8pt);
                 \draw[fill=black] (135:1.5) circle (8pt);
                 \draw[fill=black] (225:1.5) circle (8pt);
                 \draw[fill=black] (315:1.5) circle (8pt);
             \end{scope}
+            % desenhar três pontos no plano y=2
             \begin{scope}[canvas is xz plane at y=2]
                 \draw[fill=black] (0,0) circle (8pt);
                 \draw[fill=black] (135:1.5) circle (8pt);

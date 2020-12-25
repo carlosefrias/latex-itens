@@ -1,0 +1,75 @@
+\documentclass[border=1cm]{standalone}
+
+\usepackage{mathptmx}
+\usepackage{tikz,tkz-euclide}
+\usetikzlibrary{3d,calc}
+
+% https://tex.stackexchange.com/questions/353357/tikz-how-to-define-new-2d-canvas
+\makeatletter
+\tikzoption{canvas is plane}[]{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+    {
+        \def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+        \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+        \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+        \tikz@canvas@is@plane
+    }
+\makeatother
+
+\begin{document}
+    \begin{tikzpicture}[scale=2]
+        \begin{scope}[rotate around z=20, rotate around y=20]
+            \coordinate (A) at (2,0);
+            \coordinate (B) at (0,0,-2);
+            \coordinate (C) at (-2,0);
+            \coordinate (D) at (0,0,2);
+            \coordinate (E) at (0,2);
+            \coordinate (F) at (0,-2);
+            \draw[thick, fill=gray!20] (E)--(C)--(F)--(A)--cycle (C)--(D)--(A) (E)--(D)--(F);
+
+            \begin{scope} [canvas is plane={O(2,0,0)x({2-1/sqrt(2)},0,{1/sqrt(2)})y({2-1/sqrt(6)},{2/sqrt(6)},{-1/sqrt(6)})}]
+                \coordinate (P1) at (0,0);
+                \coordinate (P2) at (60:{2*sqrt(2)});
+                \coordinate (P3) at (0:{2*sqrt(2)});
+                \tkzDefTriangleCenter[centroid](P1,P2,P3)
+                \tkzGetPoint{M}
+                \Huge
+                \node at (M) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 4}};
+                \normalsize
+            \end{scope}
+
+            \begin{scope} [canvas is plane={O(0,0,2)x({0-1/sqrt(2)},0,{2-1/sqrt(2)})y({0+1/sqrt(6)},{0+2/sqrt(6)},{2-1/sqrt(6)})}]
+                \coordinate (P1) at (0,0);
+                \coordinate (P2) at (60:{2*sqrt(2)});
+                \coordinate (P3) at (0:{2*sqrt(2)});
+                \tkzDefTriangleCenter[centroid](P1,P2,P3)
+                \tkzGetPoint{M}
+                \Huge
+                \node at (M) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 8}};
+                \normalsize
+            \end{scope}
+            
+            \begin{scope} [canvas is plane={O(0,0,2)x({0-1/sqrt(2)},0,{2-1/sqrt(2)})y({0+1/sqrt(6)},{0-2/sqrt(6)},{2-1/sqrt(6)})}]
+                \coordinate (P1) at (0,0);
+                \coordinate (P2) at (60:{2*sqrt(2)});
+                \coordinate (P3) at (0:{2*sqrt(2)});
+                \tkzDefTriangleCenter[centroid](P1,P2,P3)
+                \tkzGetPoint{M}
+                \Huge
+                \node at (M) [transform shape] {\fontsize{50}{60}\selectfont 3};
+                \normalsize
+            \end{scope}
+
+            \begin{scope} [canvas is plane={O(2,0,0)x({2-1/sqrt(2)},0,{0+1/sqrt(2)})y({2-1/sqrt(6)},{0-2/sqrt(6)},{0-1/sqrt(6)})}]
+                \coordinate (P1) at (0,0);
+                \coordinate (P2) at (60:{2*sqrt(2)});
+                \coordinate (P3) at (0:{2*sqrt(2)});
+                \tkzDefTriangleCenter[centroid](P1,P2,P3)
+                \tkzGetPoint{M}
+                \Huge
+                \node at (M) [transform shape] {\fontsize{50}{60}\selectfont 2};
+                \normalsize
+            \end{scope}
+        \end{scope}
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass[12pt]{article}
+\usepackage[inline]{asymptote}
+
+\begin{document}
+    \begin{asydef}
+        //
+        // Global Asymptote definitions can be put here.
+        //
+        usepackage("bm");
+        texpreamble("\def\V#1{\bm{#1}}");
+    \end{asydef}
+
+    \begin{center}
+        \begin{asy}
+            import solids;
+            size(0,100);
+            
+            revolution r=cylinder(O,1,1.5,Y+Z);
+            draw(r,heavygreen);
+        \end{asy}
+    \end{center}
+\end{document}

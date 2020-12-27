@@ -1,0 +1,40 @@
+\documentclass[border=1cm]{standalone}
+
+\usepackage{mathptmx}
+\usepackage{tikz}
+\usetikzlibrary{3d,calc}
+
+% https://tex.stackexchange.com/questions/353357/tikz-how-to-define-new-2d-canvas
+\makeatletter
+\tikzoption{canvas is plane}[]{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+    {
+        \def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+        \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+        \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+        \tikz@canvas@is@plane
+    }
+\makeatother
+
+\begin{document}
+    \begin{tikzpicture}[scale=2]
+        \begin{scope}[rotate around z=20, rotate around y=20, rotate around x=-20]
+            \coordinate (A) at (2,0);
+            \coordinate (B) at (120:2);
+            \coordinate (C) at (240:2);
+            \coordinate(D) at (0,0,{2*sqrt(2)});
+            \draw[thick, fill=gray!20] (A)--(B)--(C)--cycle (A)--(D) (B)--(D) (C)--(D);
+            \begin{scope} [canvas is plane={O(2,0,0)x({2-1/sqrt(3)},0,{sqrt(2)/sqrt(3)})y({2-2/3},{sqrt(3)/3},{-sqrt(2)/3})}]
+                \node at ($1/3*(60:{2*sqrt(3)})+1/3*(0:{2*sqrt(3)})$) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 1}};
+            \end{scope}
+
+            \begin{scope} [canvas is plane={O(2,0,0)x({2-1/sqrt(3)},0,{sqrt(2)/sqrt(3)})y({2-2/3},{-sqrt(3)/3},{-sqrt(2)/3})}]
+                \node at ($1/3*(60:{2*sqrt(3)})+1/3*(0:{2*sqrt(3)})$) [transform shape] {\fontsize{50}{60}\selectfont 4};
+            \end{scope}
+
+            \begin{scope} [canvas is plane={O(0,0,{2*sqrt(2)})x({0-1/sqrt(12)},{0-sqrt(3)/sqrt(12)},{2*sqrt(2)-2*sqrt(2)/sqrt(12)})y({0-1/6},{3*sqrt(3)/6},{2*sqrt(2)-2*sqrt(6)/6})}]
+                \node at ($1/3*(60:{2*sqrt(3)})+1/3*(0:{2*sqrt(3)})$) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 3}};
+            \end{scope}
+        \end{scope}
+    \end{tikzpicture}
+\end{document}

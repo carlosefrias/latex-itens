@@ -1,8 +1,8 @@
 \documentclass[border=1cm]{standalone}
 
 \usepackage{mathptmx}
-\usepackage{tikz,tkz-euclide}
-\usetikzlibrary{3d}
+\usepackage{tikz}
+\usetikzlibrary{3d,calc}
 
 % https://tex.stackexchange.com/questions/353357/tikz-how-to-define-new-2d-canvas
 \makeatletter
@@ -28,39 +28,19 @@
             \draw[thick, fill=gray!20] (E)--(C)--(F)--(A)--cycle (C)--(D)--(A) (E)--(D)--(F);
 
             \begin{scope} [canvas is plane={O(2,0,0)x({2-1/sqrt(2)},0,{1/sqrt(2)})y({2-1/sqrt(6)},{2/sqrt(6)},{-1/sqrt(6)})}]
-                \coordinate (P1) at (0,0);
-                \coordinate (P2) at (60:{2*sqrt(2)});
-                \coordinate (P3) at (0:{2*sqrt(2)});
-                \tkzDefTriangleCenter[centroid](P1,P2,P3)
-                \tkzGetPoint{M}
-                \node at (M) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 4}};
+                \node at ($1/3*(60:{2*sqrt(2)})+1/3*(0:{2*sqrt(2)})$) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 4}};
             \end{scope}
 
             \begin{scope} [canvas is plane={O(0,0,2)x({0-1/sqrt(2)},0,{2-1/sqrt(2)})y({0+1/sqrt(6)},{0+2/sqrt(6)},{2-1/sqrt(6)})}]
-                \coordinate (P1) at (0,0);
-                \coordinate (P2) at (60:{2*sqrt(2)});
-                \coordinate (P3) at (0:{2*sqrt(2)});
-                \tkzDefTriangleCenter[centroid](P1,P2,P3)
-                \tkzGetPoint{M}
-                \node at (M) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 8}};
+                \node at ($1/3*(60:{2*sqrt(2)})+1/3*(0:{2*sqrt(2)})$) [transform shape] {\reflectbox{\fontsize{50}{60}\selectfont 8}};
             \end{scope}
             
             \begin{scope} [canvas is plane={O(0,0,2)x({0-1/sqrt(2)},0,{2-1/sqrt(2)})y({0+1/sqrt(6)},{0-2/sqrt(6)},{2-1/sqrt(6)})}]
-                \coordinate (P1) at (0,0);
-                \coordinate (P2) at (60:{2*sqrt(2)});
-                \coordinate (P3) at (0:{2*sqrt(2)});
-                \tkzDefTriangleCenter[centroid](P1,P2,P3)
-                \tkzGetPoint{M}
-                \node at (M) [transform shape] {\fontsize{50}{60}\selectfont 3};
+                \node at ($1/3*(60:{2*sqrt(2)})+1/3*(0:{2*sqrt(2)})$) [transform shape] {\fontsize{50}{60}\selectfont 3};
             \end{scope}
 
             \begin{scope} [canvas is plane={O(2,0,0)x({2-1/sqrt(2)},0,{0+1/sqrt(2)})y({2-1/sqrt(6)},{0-2/sqrt(6)},{0-1/sqrt(6)})}]
-                \coordinate (P1) at (0,0);
-                \coordinate (P2) at (60:{2*sqrt(2)});
-                \coordinate (P3) at (0:{2*sqrt(2)});
-                \tkzDefTriangleCenter[centroid](P1,P2,P3)
-                \tkzGetPoint{M}
-                \node at (M) [transform shape] {\fontsize{50}{60}\selectfont 2};
+                \node at ($1/3*(60:{2*sqrt(2)})+1/3*(0:{2*sqrt(2)})$) [transform shape] {\fontsize{50}{60}\selectfont 2};
             \end{scope}
         \end{scope}
     \end{tikzpicture}

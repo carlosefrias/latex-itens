@@ -1,0 +1,50 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+\usepackage{animate}
+
+\usetikzlibrary{3d, math}
+\begin{document}
+    \begin{center}
+        \begin{animateinline}[poster=25, controls={play,step,stop}]{5}
+            \multiframe{50}{ri=0+0.04}
+            {
+                \begin{tikzpicture}[scale=2]
+                    \path[use as bounding box] (-3,-1.5) rectangle (3,2.6);
+                    \tikzmath{
+                        function calcRadius(\z){
+                            return 1-0.5*\z;
+                        };
+                    }
+                    \coordinate[label=below left:$R$] (R) at (-1,0,1);
+                    \coordinate[label=below right:$S$] (S) at (1,0,1);
+                    \coordinate[label=above right:$T$] (T) at (1,0,-1);
+                    \coordinate[label=above left:$U$] (U) at (-1,0,-1);
+                    \coordinate[label=above left:$V$] (V) at (0,2,0);
+                    \draw[ultra thick](R)--(S)--(T)--(V)--cycle (S)--(V);
+                    \draw[ultra thick, dashed](R)--(U)--(T) (U)--(V);
+                    \node at (0,0) [left]{$O$};
+                    \draw[fill] (0,\ri) circle [radius=1pt] node[left]{$P$};
+                    \begin{scope}[canvas is xz plane at y=0]
+                        \draw[thick] (0,0) circle [radius={calcRadius(\ri)}];
+                    \end{scope}
+            
+                    \begin{scope}[canvas is xz plane at y=\ri]
+                        \draw[thick] (0,0) circle [radius={calcRadius(\ri)}];
+                        \draw ({-calcRadius(\ri)},{-calcRadius(\ri)}) rectangle ({calcRadius(\ri)},{calcRadius(\ri)});
+                    \end{scope}
+            
+                    \draw[rotate around y=15, thick] ({-calcRadius(\ri)},0)--({-calcRadius(\ri)},\ri) ({calcRadius(\ri)},0)--({calcRadius(\ri)},\ri);
+            
+                    \draw[thick, dotted](0,0)--(1,0);
+                    \draw[->,>=latex,thick](1,0)--(1.5,0)node[below]{$y$};
+                    \draw[thick, dotted](0,0)--(0,2);
+                    \draw[->,>=latex,thick](0,2)--(0,2.5)node[left]{$z$};
+                    \draw[thick, dotted](0,0)--(0,0,1);
+                    \draw[->,>=latex,thick](0,0,1)--(0,0,2)node[below right]{$x$};
+                \end{tikzpicture}
+            }
+        \end{animateinline}
+    \end{center}
+
+\end{document}

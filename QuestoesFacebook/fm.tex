@@ -1,0 +1,29 @@
+\documentclass[border=1cm]{standalone}
+
+\usepackage{tikz,tkz-euclide}
+\usetikzlibrary{intersections}
+
+\begin{document}
+    \begin{tikzpicture}
+        \clip (-1,-1) rectangle (9,7.5);
+        \coordinate[label=below left:$A$] (A) at (0,0);
+        \coordinate[label=below right:$C$] (C) at (8,0);
+        \path[name path=circCentroA] (A) circle [radius=7];
+        \path[name path=circCentroC] (C) circle [radius=9];
+        \path[name intersections={of=circCentroA and circCentroC}];
+        \coordinate [label=above:$B$] (B) at (intersection-1);
+        \draw[thick] (A)--(C)--(B)--cycle;
+        \tkzDrawCircle[in, thick, name path=inCircle](A,B,C)
+        \tkzInCenter(A,B,C)\tkzGetPoint{I}
+        \draw[fill] (I) circle [radius=2pt] node[above left]{$I$};
+        \path[name path=retaBC] (B)--(C);
+        \path[name intersections={of=inCircle and retaBC}];
+        \coordinate [label=above right:$T$] (T) at (intersection-1);
+        \tkzInterLL(A,C)(I,T)\tkzGetPoint{E}
+        \node at (E)[below left]{$E$};
+        \draw[thick](T)--(E);
+        \path[name path=retaAC] (A)--(C);
+        \path[name intersections={of=inCircle and retaAC}];
+        \coordinate [label=below:$N$] (N) at (intersection-1);
+    \end{tikzpicture}
+\end{document}

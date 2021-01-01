@@ -1,0 +1,57 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+\usepackage{animate}
+\usepackage{ifthen}
+\usetikzlibrary{math}
+
+\begin{document}
+    \begin{center}
+        \begin{animateinline}[poster=0, controls={play,step,stop}]{10}
+            \multiframe{51}{ri=0+0.04}
+            {
+                \begin{tikzpicture}
+                    \path[use as bounding box] (-2,-1) rectangle (5.5,5.5);
+                    \draw[->,>=latex, thick] (-2,0) -- (5,0) node[below]{\(x\)};
+                    \draw[->,>=latex, thick] (0,-2) -- (0,5) node[left]{\(y\)};
+                                        
+                    \draw[ultra thick, blue, samples=200, domain=\ri+2:\ri-2] 
+                        plot (\x, {(\x-\ri)^2})
+                        node[right]{$f\left(x\right)=\left(x-\ri \right)^2$};
+                    \node at (\ri, 0)[below] {$\ri$};
+                    \node at (0, 0)[below left] {$O$};
+                \end{tikzpicture}
+            }
+            \multiframe{26}{ri=0+0.04}
+            {
+                \begin{tikzpicture}
+                    \path[use as bounding box] (-2,-1) rectangle (5.5,5.5);
+                    \draw[->,>=latex, thick] (-2,0) -- (5,0) node[below]{\(x\)};
+                    \draw[->,>=latex, thick] (0,-2) -- (0,5) node[left]{\(y\)};
+                                        
+                    \draw[ultra thick, blue, samples=200, domain=4:0] 
+                        plot (\x, {(\x-2)^2+\ri})
+                        node[right]{$f\left(x\right)=\left(x-2 \right)^2+\ri $};
+                    \node at (0, 0)[below left] {$O$};
+                    \node at (2, 0)[below] {$2$};
+                    \draw[dashed] (2,0)--(2,\ri)--(0,\ri)node[left]{$\ri$};
+                \end{tikzpicture}
+            }
+            \multiframe{31}{ri=1+0.1}
+            {
+                \begin{tikzpicture}
+                    \path[use as bounding box] (-2,-1) rectangle (5.5,5.5);
+                    \draw[->,>=latex, thick] (-2,0) -- (5,0) node[below]{\(x\)};
+                    \draw[->,>=latex, thick] (0,-2) -- (0,5) node[left]{\(y\)};
+                                        
+                    \draw[ultra thick, blue, samples=200, domain=4:0] 
+                        plot (\x, {\ri*(\x-2)^2+1});
+                    \node at (0,5) [right, blue] {$f\left(x\right)=\ri \left(x-2 \right)^2+1$};
+                    \node at (0, 0)[below left] {$O$};
+                    \node at (2, 0)[below] {$2$};
+                    \draw[dashed] (2,0)--(2,1)--(0,1)node[left]{$1$};
+                \end{tikzpicture}
+            }
+        \end{animateinline}
+    \end{center}
+\end{document}

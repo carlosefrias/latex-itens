@@ -1,0 +1,29 @@
+\documentclass[border=1cm]{standalone}
+\usepackage{animate}
+\usepackage{tikz}
+
+\begin{document}
+    \begin{animateinline}[poster=0, controls={play,step,stop}]{10}
+        \multiframe{73}{ri=0+5.0}
+        {
+            \begin{tikzpicture}
+                \path[use as bounding box] (-5,-4) rectangle (2.5,4);
+
+                \begin{scope}[rotate around={\ri:(-1,0)}]                    
+                    \draw[gray] (-1,0) circle [radius=1cm];
+                    \begin{scope}[rotate around={\ri:(1,0)}]
+                        \draw[red] (1,0) circle [radius=1cm];
+                        \draw[fill, red] (0,0) circle[radius=2pt]; 
+                    \end{scope}
+                \end{scope}
+
+                \draw[color=blue, ultra thick, domain=0:\ri,smooth,variable=\t, samples=200] 
+                plot ({\t}:{2*(1-cos(\t))});
+                \draw[thick, ->, >=latex] (-5,0) -- (1.2,0) node[below]{\(x\)};
+                \draw[thick, ->, >=latex] (0,-3) -- (0,3) node[left]{\(y\)};        
+                \node at (0,0) [below left]{\(O\)};
+            \end{tikzpicture}
+        }
+    \end{animateinline}
+
+\end{document}

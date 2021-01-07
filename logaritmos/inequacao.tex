@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage{Intervalosreta}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{polynom}
+
+\begin{document}
+    \begin{enumerate}
+        \item Resolva, em $\mathbb{R}$ e por processos analíticos, a inequação:
+        \[\log_2 \left(x-2\right)\leq1+\log_{\sqrt{2}}\left(\sqrt{x}\right)-\log_4 \left(x+3\right)\]
+
+        Apresente o conjunto solução utilizando a notação de intervalos de números reais.
+    \end{enumerate}
+
+
+    \bigskip
+    \textbf{Proposta de resolução:}
+
+    \[D=\{x\in\mathbb{R}: x-2>0 \land \sqrt{x}>0 \land x\geq0 \land x+3>0\}\]
+
+    \[=\{x\in\mathbb{R}: x>2 \land x>0 \land x>-3\}\]
+
+    \begin{center}
+        \begin{tikzpicture}
+            \eixo{-4}{7}
+            \intnuminf{-3}{a}[0.8]
+            \intnuminf{0}{a}[1]
+            \intnuminf{2}{a}[1.2]
+        \end{tikzpicture}
+    \end{center}
+
+    \[D=\left]2,~+\infty\right[\]
+
+    \begin{center}        
+        \begin{tikzpicture}
+            \eixo{-1}{6}
+            \intnuminf{2}{a}[0.8]
+        \end{tikzpicture}
+    \end{center}
+
+    \[\log_2 \left(x-2\right)\leq1+\log_{\sqrt{2}}\left(\sqrt{x}\right)-\log_4 \left(x+3\right)\Leftrightarrow\]
+
+    \[\log_2 \left(x-2\right)+\log_4 \left(x+3\right)\leq1+\dfrac{\log_2 \sqrt{x}}{\log_2 \sqrt{2}}\Leftrightarrow\]
+
+    \[\log_2 \left(x-2\right)+\dfrac{\log_2 \left(x+3\right)}{\log_2 4}\leq1+\dfrac{\frac{1}{2} \log_2 x}{\frac{1}{2}}\Leftrightarrow\]
+
+    \[\log_2 \left(x-2\right)+\frac{1}{2}\log_2\left(x+3\right)\leq1+\log_2 x\Leftrightarrow\]
+
+    \[2\log_2 \left(x-2\right)+\log_2\left(x+3\right)\leq2+2\log_2 x\Leftrightarrow\]
+
+    \[\log_2 \left[\left(x-2\right)^2\left(x+3\right)\right]\leq\log_2\left(4x^2\right)\Leftrightarrow\]
+
+    \[\left(x^2-4x+4\right)\left(x+3\right)\leq 4x^2\Leftrightarrow\]
+
+    \[x^3+3x^2-4x^2-12x+4x+12-4x^2\leq 0\Leftrightarrow\]
+
+    \[x^3-5x^2-8x+12\leq 0\]
+
+    Os divisores do termo independente \(12\) são: 1, -1, 2, -2, 3, -3, 4, -4, 6, -6, 12 e -12.
+
+    Testando para \(x=1\):
+    \[1^3-5\times1^2-8\times1+12=1-5-8+12=0\]
+
+    Assim \(1\) é raíz do polinómio \(x^3-5x^2-8x+12\).
+
+    Aplicando a regra de Ruffini, tem-se:
+
+    \begin{center}
+        \polyhornerscheme[x=1]{x^3-5x^2-8x+12}        
+    \end{center}
+
+    Logo:
+    \[x^3-5x^2-8x+12\leq 0\Leftrightarrow\left(x-1\right)\left(x^2-4x-12\right)\leq0\]
+
+    Aplicando a fórmula resolvente:
+
+    \[x^2-4x-12=0\Leftrightarrow x=\dfrac{4\pm\sqrt{16+4\times12}}{2}\Leftrightarrow x=\dfrac{4\pm8}{2}\Leftrightarrow x=6\lor x=-2\]
+
+    Então: 
+
+    \[\left(x-1\right)\left(x^2-4x-12\right)\leq0\Leftrightarrow\left(x-1\right)\left(x-6\right)\left(x+2\right)\leq0\]
+
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+         $x$   & $-\infty$ & -2 &   & 1 &   & 6 & $+\infty$ \\ \hline
+        $x-1$ & -         & -  & - & 0 & + & + & +         \\ \hline
+        $x-6$ & -         & -  & - & - & - & 0 & +         \\ \hline
+        $x+2$ & -         & 0  & + & + & + & + & +         \\ \hline
+        P   & -         & 0  & + & 0 & - & 0 & +         \\ \hline
+        \end{tabular}
+    \end{center}
+
+    \[C.S=\left]2,+\infty\right[\cap\left(\left]-\infty,-2\right]\cup\left[1,6\right]\right)\]
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \eixo{-4}{7}
+            \intnuminf{2}{a}[0.8]
+            \intnumnum{1}{f}{6}{f}
+            \intinfnum{-2}{f}
+        \end{tikzpicture}
+    \end{center}
+
+    \[C.S=\left]2,6\right]\]
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \eixo{-1}{8}
+            \intnumnum{2}{a}{6}{f}
+        \end{tikzpicture}    
+    \end{center}
+
+\end{document}
+

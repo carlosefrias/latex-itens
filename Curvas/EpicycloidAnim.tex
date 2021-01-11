@@ -17,7 +17,7 @@
                 
                 \begin{scope}[rotate around={\ri:(0,0)}]                    
                     \draw[gray, blue] (0,0) circle [radius=\R cm];
-                    \begin{scope}[rotate around={\R*\ri:(\R+\r,0)}]
+                    \begin{scope}[rotate around={\R*\ri/\r:(\R+\r,0)}]
                         \draw[red] (\R+\r,0) circle [radius=\r cm];
                         \draw (\R,0) -- (\R+\r,0);
                         \draw[fill] (\R+\r,0) circle [radius=2pt];

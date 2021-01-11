@@ -1,0 +1,34 @@
+\documentclass[border=1cm]{standalone}
+
+\usepackage{animate}
+\usepackage{tikz}
+
+\begin{document}
+    \def\R{3} %radius of the bigger circle
+    \def\r{1} %radius of the smaller circle
+    \begin{animateinline}[poster=0, controls={play,step,stop}]{10}
+        \multiframe{73}{ri=0+5.0}
+        {
+            \begin{tikzpicture}
+                \path[use as bounding box] ({-\R-2*\r-1},{-\R-2*\r-1}) rectangle ({\R+2*\r+1},{\R+2*\r+1});
+
+                \draw[thick, ->, >=latex] (-\R-2*\r-0.5,0) -- (\R+2*\r+0.5,0) node[below]{\(x\)};
+                \draw[thick, ->, >=latex] (0,-\R-2*\r-0.5) -- (0,\R+2*\r+0.5) node[left]{\(y\)};
+                
+                \begin{scope}[rotate around={\ri:(0,0)}]                    
+                    \draw[gray, blue] (0,0) circle [radius=\R cm];
+                    \begin{scope}[rotate around={\R*\ri:(\R+\r,0)}]
+                        \draw[red] (\R+\r,0) circle [radius=\r cm];
+                        \draw (\R,0) -- (\R+\r,0);
+                        \draw[fill] (\R+\r,0) circle [radius=2pt];
+                        \draw[fill, red] (\R,0) circle[radius=2pt];
+                    \end{scope}
+                \end{scope}
+
+                \draw[color=red, thick, domain=0:\ri, smooth, variable=\t, samples=100] 
+                    plot ({(\R+\r)*cos(\t)-\r*cos(((\R+\r)/\r)*\t)},{(\R+\r)*sin(\t)-\r*sin(((\R+\r)/\r)*\t)});
+                \node at (0,0) [below left]{\(O\)};
+            \end{tikzpicture}
+        }
+    \end{animateinline}
+\end{document}

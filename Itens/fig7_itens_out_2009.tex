@@ -4,9 +4,9 @@
 
 \begin{document}
     \begin{tikzpicture}
-        \coordinate[label=right:{$O$}] (O) at (0,0);
+        \coordinate (O) at (0,0);
         \coordinate[label=above:{$A$}] (A) at (0,5);
-        \coordinate (B) at (0,-5);
+        \coordinate[label=below:{$B$}] (B) at (0,-5);
         \coordinate (C) at (0,3);
 
         \draw[thick, left color = yellow!70,right color = olive!70] (A)--(-4,3)--(B)--(4,3)--cycle;
@@ -23,6 +23,5 @@
         \draw[fill] (C) circle [radius=1.5pt];
         \node[right] at (C) {$C$};
         \node[right] at (O) {$O$};
-
     \end{tikzpicture}
 \end{document}

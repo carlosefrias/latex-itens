@@ -15,8 +15,8 @@
         \draw (30,0,30)--(30,15,30);
         \draw[fill=red!20](0,15)--(30,15)--(30,15,30)--(0,15,30)--cycle;
         \draw[name path=esfera, left color=yellow!70, right color=olive!70] 
-            ($(15,21,15) + ({-atan(6/8)}:10cm)$) arc [start angle={-atan(6/8)}, end angle={180+atan(6/8)}, radius=10cm];
-        \draw[left color=yellow!70, right color=olive!70] (15-8,15,15) arc [start angle=-180, end angle=0, x radius=8, y radius=1];
+            ($(15,21,15) + ({-atan(6/8)}:10cm)$) arc [start angle={-atan(6/8)}, end angle={180+atan(6/8)}, radius=10cm]
+            arc [start angle=-180, end angle=0, x radius=8, y radius=1];
         \draw[dotted] (15+8,15,15) arc [start angle=0, end angle=180, x radius=8, y radius=1];
         \path[name path=aresta] (30,15)--(0,15);
         \path[name intersections={of=esfera and aresta}];

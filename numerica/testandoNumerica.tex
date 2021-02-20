@@ -1,0 +1,15 @@
+\documentclass{article}
+
+\usepackage{multicol}
+\usepackage[tables]{numerica}
+\begin{document}
+
+    \begin{multicols}{2}
+        \tabulate[o,rvar=x,rstep=1,rstop=44,rround=0,rules=ThB]
+        {, \sin x, \cos x, \tan x }[x=0][*]
+
+
+        \tabulate[o,rvar=x,rstep=1,rstop=89,rround=0,rules=ThB]
+        {, \sin x, \cos x, \tan x }[x=45][*]
+    \end{multicols}
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[border=0.5 cm]{standalone}
+
+\usepackage{tikz, tikz-3dplot, tkz-euclide}
+
+\begin{document}
+
+% adaptado de https://github.com/anteroneves/LaTeXShared/blob/main/EsferaParalelepipedo/EsferaParalelepipedo.tex
+\def\angA{80}
+\def\angB{120}
+\tdplotsetmaincoords{\angA}{\angB}
+\begin{tikzpicture}[tdplot_main_coords]
+    \pgfmathsetmacro\rotB{\angB-90}	
+	\pgfmathsetmacro\rotA{\angA-90}	
+
+    \begin{scope}[shift=(O1),rotate around z=\rotB,rotate around y=\rotA,remember picture]
+		\begin{scope}[canvas is yz plane at x=15]
+			\tkzDrawCircle(O1,B)
+			\tkzCalcLength(O1,B) \tkzGetLength{rB}
+			\shade[ball color = gray!40, opacity = 0.4] (0,0) circle (\rB pt);
+			\tkzInterLC(A15,B15)(O1,B)\tkzGetPoints{a}{b}
+			\tkzInterLC(A15,D15)(O1,B)\tkzGetPoints{c}{d}
+			\tkzInterLC(A0,A15)(O1,B)\tkzGetPoints{e}{f}
+		\end{scope}
+	\end{scope}	
+\end{tikzpicture}
+    
+\end{document}

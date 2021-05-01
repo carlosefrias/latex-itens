@@ -1,7 +1,7 @@
 if(!settings.multipleView) settings.batchView=false;
 settings.inlinetex=true;
 deletepreamble();
-defaultfilename="cilindro-1";
+defaultfilename="test-2";
 if(settings.render < 0) settings.render=4;
 settings.outformat="";
 settings.inlineimage=true;
@@ -9,14 +9,16 @@ settings.embed=true;
 settings.toolbar=false;
 viewportmargin=(2,2);
 
-//
 // Global Asymptote definitions can be put here.
-//
+import three;
 usepackage("bm");
 texpreamble("\def\V#1{\bm{#1}}");
+// One can globally override the default toolbar settings here:
+// settings.toolbar=true;
 
-import solids;
-size(0,100);
 
-revolution r=cylinder(O,1,1.5,Y+Z);
-draw(r,heavygreen);
+currentprojection=orthographic(5,4,2);
+draw(unitcube,blue);
+label("$V-E+F=2$",(0,1,0.5),3Y,blue+fontsize(17pt));
+size(0,113.81102pt,keepAspect=true);
+viewportsize=(390.0pt,0);

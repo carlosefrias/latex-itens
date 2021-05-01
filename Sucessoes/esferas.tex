@@ -1,0 +1,15 @@
+\documentclass[border=1cm]{standalone}
+
+\usepackage{tikz}
+\usepackage{xifthen}
+
+\begin{document}
+    \def\nTermos{4}
+    \begin{tikzpicture}
+        \foreach \i in {0,...,3}{
+            \begin{scope}[shift=(2,0)]
+                \shade[ball color=red] (0,0) circle [radius=0.5];
+            \end{scope}
+        }
+    \end{tikzpicture}
+\end{document}

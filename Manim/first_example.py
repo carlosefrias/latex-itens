@@ -3,10 +3,10 @@ from manimlib import *
 class QuadraticEquation(Scene):
     def construct(self):
         lines = VGroup(
-            Tex("x^2-x-6=0"),
-            Tex("x=\\dfrac{1\\pm\\sqrt{(-1)^2-4\\times 1\\times (-6)}}{2\\times 1}"),
-            Tex("x=\\dfrac{1\\pm5}{2}"),
-            Tex("x=3\\lor x=-2")
+            Tex(r"x^2-x-6=0"),
+            Tex(r"x=\dfrac{1\pm\sqrt{(-1)^2-4\times 1\times (-6)}}{2\times 1}"),
+            Tex(r"x=\dfrac{1\pm5}{2}"),
+            Tex(r"x=3\lor x=-2")
         )
         lines.arrange(DOWN, buff=LARGE_BUFF)
         play_kw = {"run_time": 2}

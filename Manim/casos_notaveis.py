@@ -46,8 +46,16 @@ class DiferencaQuadrados(Scene):
 
         self.play(FadeOut(label))
         self.play(FadeOut(label_b))
-        self.play(FadeOut(quadrado_lado_a))
-        self.play(FadeOut(quadrado_lado_b))
+        self.wait()
+
+        quadrado_lado_a.generate_target()
+        quadrado_lado_a.target.move_to([0,0,0])
+        self.play(MoveToTarget(quadrado_lado_a))
+        self.wait()
+
+        quadrado_lado_b.generate_target()
+        quadrado_lado_b.target.move_to([2,-2,0])
+        self.play(MoveToTarget(quadrado_lado_b))
         self.wait()
 
         group = VGroup(quadrado_lado_a, quadrado_lado_b)
@@ -62,7 +70,7 @@ class DiferencaQuadrados(Scene):
             color=WHITE
         ).set_fill(GRAY, opacity=0.5)
         
-        self.play(Transform(group, poligono_aa_bb))
+        self.play(FadeTransform(group, poligono_aa_bb))
         self.wait()
 
         label_aa_bb = MathTex(r"a^2-b^2").move_to(poligono_aa_bb.get_center())
@@ -88,7 +96,7 @@ class DiferencaQuadrados(Scene):
         ).set_fill(PINK, opacity=0.5)
 
         group2 = VGroup(rectangulo_a_a_menos_b, rectangulo_b_a_menos_b)
-        self.play(Transform(group, group2))
+        self.play(ReplacementTransform(poligono_aa_bb, group2))
         self.wait()
 
         label1 = MathTex(r"a\left(a-b\right)").move_to(rectangulo_a_a_menos_b.get_center())
@@ -98,37 +106,18 @@ class DiferencaQuadrados(Scene):
         self.play(Create(label2))
         self.wait()
 
-        pol1 = Polygon(
-            [-a/2, -a/2+b, 0],
-            [a/2, -a/2+b, 0],
-            [a/2, a/2, 0],
-            [-a/2, a/2, 0],
-            color=WHITE
-        ).set_fill(BLUE, opacity=0.5)
-
-        pol2 = Polygon(
-            [a/2, -a/2+b, 0],
-            [a/2+b, -a/2+b, 0],
-            [a/2+b, a/2, 0],
-            [a/2, a/2, 0],
-            color=WHITE
-        ).set_fill(PINK, opacity=0.5)
-        
-        self.play(FadeOut(label1))
-        self.play(FadeOut(label2))
-        self.play(FadeOut(group))
+        self.play(Rotate(rectangulo_a_a_menos_b,
+                angle=PI/2,
+                about_point=rectangulo_a_a_menos_b.get_center()))
         self.wait()
 
-        group3 = VGroup(pol1, pol2)
-        self.play(FadeTransform(group2, group3))
-        self.wait()
+        rectangulo_b_a_menos_b.generate_target()
+        rectangulo_b_a_menos_b.target.move_to([3,0,0])
+        self.play(MoveToTarget(rectangulo_b_a_menos_b))
 
-        label1.move_to(pol1.get_center())
-        label2.move_to(pol2.get_center())
-
-        self.play(Create(label1))
-        self.play(Create(label2))
-        self.wait()
+        label2.generate_target()
+        label2.target.move_to(rectangulo_b_a_menos_b.get_center())
+        self.play(MoveToTarget(label2))
 
         self.play(FadeOut(label1))
         self.play(FadeOut(label2))
@@ -140,10 +129,9 @@ class DiferencaQuadrados(Scene):
             [a/2+b, a/2, 0],
             [-a/2, a/2, 0],
             color=WHITE
-        ).set_fill(GOLD, opacity=0.5)
+        ).set_fill(GOLD, opacity=0.5).move_to([0,0,0])
         
-        self.play(FadeOut(group3))
-        self.play(FadeTransform(group3, pol3))
+        self.play(FadeTransform(group2, pol3))
         self.wait()
 
         label3 = MathTex(r"\left(a-b\right)\left(a+b\right)").move_to(pol3.get_center())
@@ -159,14 +147,14 @@ class DiferencaQuadrados(Scene):
         self.play(Create(step1))
         self.wait(1)
 
-        step2 = MathTex(r"=a^2-ab+ba-b^2")
-        self.play(FadeTransform(step1,step2))
+        step2 = MathTex(r"a^2-ab+ba-b^2")
+        self.play(ReplacementTransform(step1,step2))
         self.wait(2)
 
-        step3 = MathTex(r"=a\left(a-b\right) + b\left(a-b\right)")
-        self.play(FadeTransform(step2,step3))
+        step3 = MathTex(r"a\left(a-b\right) + b\left(a-b\right)")
+        self.play(ReplacementTransform(step2,step3))
         self.wait(2)
         
-        step4 = MathTex(r"=\left(a-b\right)\left(a+b\right)")
-        self.play(FadeTransform(step3,step4))
+        step4 = MathTex(r"\left(a-b\right)\left(a+b\right)")
+        self.play(ReplacementTransform(step3,step4))
         self.wait(2)

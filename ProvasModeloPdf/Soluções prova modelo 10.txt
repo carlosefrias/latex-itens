@@ -1,0 +1,20 @@
+Soluções prova modelo 10
+
+1. C
+2. ((4+3raiz(3))/2; (3+4raiz(3))/2)
+3. B
+4. 5raiz(2)e^[i(3pi/4)]
+5. [1, 3[
+6.1. A
+6.2. 3x10A8x20A16 / 30A24
+7. (10501x2^100 - 1)/2^100
+8.1. 42
+8.2. (x-17)^2 + (y-20)^2 + (z-13)^2 = 673
+9.1. C
+9.2. g é crescente em ]0, 2pi/3]. g é decrescente em [2pi/3, pi]. 2pi/3 é maximizante, pi é minimizante
+10. D
+11. demonstração
+12. 0.37; 1.81; 3.38
+13. 2/3
+14. Por fazer...
+15. demonstração

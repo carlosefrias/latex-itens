@@ -13,8 +13,8 @@ Soluções prova modelo 10
 9.1. C
 9.2. g é crescente em ]0, 2pi/3]. g é decrescente em [2pi/3, pi]. 2pi/3 é maximizante, pi é minimizante
 10. D
-11. demonstração
+11. 
 12. 0.37; 1.81; 3.38
 13. 2/3
-14. Por fazer...
-15. demonstração
+14. 
+15. 

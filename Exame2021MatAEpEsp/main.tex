@@ -1,0 +1,146 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \coordinate[label=left:{$A$}] (A) at (0,3,0);
+        \coordinate[label=below:{$B$}] (B) at (0,0,-1);
+        \coordinate[label=right:{$E$}] (E) at (6,2,-2);
+        \coordinate (M) at (0,2,-2);
+        \coordinate[label=above:{$D$}] (D) at ($(B) + 2*(M) - 2*(B)$);
+        \coordinate[label=left:{$C$}] (C) at ($(B) + (D) - (A)$);
+        
+        \draw[dotted](0,1)--(C)--(0,0,-4);
+        \draw[thick] (A)--(B)--(E)--(D)--cycle (A)--(E);
+        \draw[thick, dashed] (B)--(C)--(E) (C)--(D);
+        \draw[thick, ->, >=stealth](-2,0)--(7,0)node[below]{$y$};
+        \draw[thick, ->, >=stealth](0,-2)--(0,6)node[left]{$z$};
+        \draw[thick, dashed](0,0,-5)--(B);
+        \draw[thick, ->, >=stealth](B)--(0,0,3)node[below right]{$x$};
+        \node[below right] at (0,0) {$O$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:geom}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \def\angle{130}
+    \begin{tikzpicture}[scale=1]
+        \coordinate[label=below left:{$O$}] (O) at (0,0);
+        \coordinate[label=below:{$A$}] (A) at (0:4);
+        \coordinate[label=above right:{$P$}] (P) at (60:4);
+        \coordinate[label=left:{$B$}] (B) at (90:4);
+        \coordinate[label=below:{$T$}] (T) at ($(O)!(P)!(A)$);
+        \coordinate[label=left:{$S$}] (S) at ($(O)!(P)!(B)$);
+        \draw[ultra thick] (A) arc [start angle =0, end angle = 90, radius=4]
+            (T)--(P)--(S);
+        \node[above right] at (30:4) {$d$};
+        \draw[ultra thick,->,>=stealth](-0.5,0)--(5,0) node[below]{$x$};
+        \draw[ultra thick,->,>=stealth](0,-0.5)--(0,5) node[left]{$y$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:trig}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        \draw[thick, fill=gray!30] (0,0) rectangle (10,10);
+        \draw[ultra thick,->,>=stealth](-1,0)--(12,0) node[below]{$x$};
+        \draw[ultra thick,->,>=stealth](0,-1)--(0,12) node[left]{$y$};
+        \node at (0,0) [below left]{$O$};
+        \node at (10,0) [below]{$10$};
+        \node at (0,10) [left]{$10$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:quadrado}
+\end{figure}
+
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[thick] (0.2,3)..controls (1.1,-1.3) and (2,-1.7) .. (5,-3);
+            \draw[ultra thick,->,>=stealth](-1,0)--(5,0) node[below]{$x$};
+            \draw[ultra thick,->,>=stealth](0,-3)--(0,3) node[left]{$y$};
+            \node at (0,0) [below left]{$O$};
+        \end{tikzpicture}
+        %\caption{}
+        \label{fig:A}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[thick] (0.2,-5)..controls (1,-1) and (1.5, -0.5) .. (5,-0.2);
+            \draw[ultra thick,->,>=stealth](-1,0)--(5,0) node[above]{$x$};
+            \draw[ultra thick,->,>=stealth](0,-5)--(0,3) node[left]{$y$};
+            \node at (0,0) [below left]{$O$};
+        \end{tikzpicture}
+        %\caption{}
+        \label{fig:B}
+    \end{figure}
+\end{minipage}
+
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[thick] (0,0)..controls (1,0) and (3, 1) .. (5,4);
+            \draw[ultra thick,->,>=stealth](-1,0)--(5,0) node[below]{$x$};
+            \draw[ultra thick,->,>=stealth](0,-1.5)--(0,5) node[left]{$y$};
+            \node at (0,0) [below left]{$O$};
+            \draw[thick, fill=white] (0,0) circle [radius=2.5pt];
+        \end{tikzpicture}
+        %\caption{}
+        \label{fig:C}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[thick] (0.2,-3)..controls (1.1,1.3) and (2,1.7) .. (5,3);
+            \draw[ultra thick,->,>=stealth](-1,0)--(5,0) node[below]{$x$};
+            \draw[ultra thick,->,>=stealth](0,-3)--(0,3) node[left]{$y$};
+            \node at (0,0) [below left]{$O$};
+        \end{tikzpicture}
+        %\caption{}
+        \label{fig:D}
+    \end{figure}
+\end{minipage}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[ultra thick, domain=1.2:-1.2, samples=100] plot (\x,2*\x*\x) node[below left]{$f$};
+        \draw[ultra thick, domain=-1.2:3.2, samples=100] plot (\x,{-(\x-1)^2}) node[above right]{$g$};
+        
+        \coordinate[label=right:{$A$}] (A) at (2/3, 8/9);
+        \coordinate[label=left:{$B$}] (B) at (-1/3, -16/9);
+        \draw[thick] ($(B)+0.7*(B)-0.7*(A)$) -- ($(A)-0.7*(B)+0.7*(A)$);
+        \draw[draw = none, fill=gray] (A) circle [radius=1.5pt];
+        \draw[draw = none, fill=gray] (B) circle [radius=1.5pt];
+        \draw[ultra thick,->,>=stealth](-2,0)--(4,0) node[below]{$x$};
+        \draw[ultra thick,->,>=stealth](0,-5)--(0,3) node[left]{$y$};
+        \node at (0,0) [below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:parabolas}
+\end{figure}
+
+
+\end{document}

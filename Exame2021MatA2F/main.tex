@@ -1,0 +1,68 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \coordinate[label=above left:{$P$}] (P) at (-1,2,1);
+        \coordinate[label=above:{$Q$}] (Q) at (1,1,-2);
+        \coordinate[label=below right:{$R$}] (R) at (5,-3,-5);
+        \coordinate[label=below left:{$S$}] (S) at (0,-0.5,2.5);
+        \draw[thick, fill=gray!10] (P)--(Q)--(R)--(S)--cycle;
+        \draw[thick] (0,0,-4.5)--(0,0,-7);
+        \draw[thick, dashed] (0,0,-4.5)--(0,0,1);
+        \draw[thick,->,>=stealth] (0,0,1)--(0,0,6) node[below right]{$x$};
+        \draw[thick](-1.2,0)--(-3,0);
+        \draw[thick, dashed](-1.2,0)--(1,0);
+        \draw[thick,->,>=stealth] (1,0)--(8,0) node[below]{$y$};
+        \draw[thick, dashed](0,-1.4)--(0,1);
+        \draw[thick](0,-1.4)--(0,-3);
+        \draw[thick,->,>=stealth] (0,1)--(0,4) node[left]{$z$};
+        \node at (0,0) [below right]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:geom}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        \draw[thick] (-1,0.2) .. controls(1,0.4) and (1.7,0.6) .. (2,1);
+        \draw[thick] (4,0.1) .. controls(2.3,0.3) .. (2.1,3) node[below right]{$g$};
+        \draw[dashed] (2,3)--(2,0) node[below]{$2$};
+        \draw[dashed] (2,1)--(0,1) node[left]{$1$};
+        \draw[fill=white] (2,1) circle [radius=1.5pt];
+        \draw[thick,->,>=stealth](-1,0)--(4,0)node[below]{$x$};
+        \draw[thick,->,>=stealth](0,-0.5)--(0,3)node[left]{$y$};
+        \node at (0,0) [below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:grafico}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \def\angle{37}
+    \begin{tikzpicture}[scale=2.5]
+        \coordinate[label=below right:{$A$}] (A) at (1,0);
+        \coordinate[label=above right:{$B$}] (B) at (\angle:1);
+        \coordinate[label=above left:{$C$}] (C) at (3*\angle:1);
+        \coordinate[label=below left:{$O$}] (O) at (0,0);
+        \draw[thick, rounded corners=1pt](A)--(B)--(O)--cycle (O)--(C);
+        \draw[thick] (0,0) circle [radius=1];
+        \draw[thick,->,>=stealth] (-1.2,0)--(1.5,0)node[below]{$x$};
+        \draw[thick,->,>=stealth] (0,-1.2)--(0,1.5)node[left]{$y$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:trig}
+\end{figure}
+\end{document}

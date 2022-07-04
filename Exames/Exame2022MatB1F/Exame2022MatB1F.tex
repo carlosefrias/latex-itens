@@ -1,0 +1,166 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{ifthen}
+\usetikzlibrary{calc, angles}
+
+\begin{document}
+\begin{figure}[H]
+    \centering
+    %definir diferentes escalas para x e para y
+    \begin{tikzpicture}[xscale=3,yscale=0.4]
+    %cria as barras, nós e linhas a tracejado num ciclo
+    \foreach \x/\val in {0/3,0.5/14,1/8,1.5/17,2/5,2.5/5,3/6}
+    {
+        %desenha o rectângulo
+        \draw[fill=gray!20] (\x,0) rectangle (\x+0.5, \val);
+        %desenha a linha a tracejado e o nó no eixo vertical
+        \draw[dashed] (\x,\val)--(0,\val) node[left]{$\val$};
+        %coloca o nó no eixo horizontal
+        \node at (\x,0) [below]{$\x$};
+    }
+    %coloca o nó que falta no eixo horizontal
+    \node at (3.5,0) [below]{$3.5$};
+    %desenha os eixos
+    \draw[ultra thick, ->, >=stealth] (0,0)--(4,0) node[below]{Peso (kg)};
+    \draw[ultra thick, ->, >=stealth] (0,0)--(0,19) node[above]{Número de alunos};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    %cria um scope
+    \begin{scope}
+        %recorta figura pelo rectangulo indicado
+        \clip (0,0) rectangle (6,3);
+        %cria os semi-círculos usando ciclos para determinar o centro
+        \foreach \x in {-2,0,2,4,6}
+        {
+            \foreach \n in {-1,0,1}
+            {
+                \foreach \p in {0,1}
+                {
+                    %desenha o semi-círculo 
+                    \draw (\x+\n+\p,\n+\p) arc [start angle=-90, end angle=90, radius=1];
+                }
+            }
+        }
+    \end{scope}
+    %desenha as linhas horizontais
+    \foreach \y in {0,...,3}
+    {
+        \draw (0,\y)--(6,\y);
+    }
+    %desenha as linhas verticais a tracejado
+    \foreach \x in {0,...,6}
+    {
+        \draw[dashed] (\x,0)--(\x,3);
+    }
+    %marca os centros dos semi-círculos
+    \foreach \x in {1,3,5}
+    {
+        \foreach \y in {0,2}
+        {
+            \foreach \p in {0,1}
+            {
+                %desenha o ponto
+                \draw[fill] (\x-\p,\y+\p) circle [radius=2pt];
+            }
+        }
+    }
+    \end{tikzpicture}
+    \caption{}
+    \label{fig4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        %cria um scope (ambiente)
+        \begin{scope}
+            %recorta a figura pelo rectangulo indicado
+            \clip (0,0) rectangle (6,3);
+            %desenha as "barbatas de tubarão" num ciclo que calcula o ponto inicial
+            \foreach \x in {-1,0,1,2,3}
+            {
+                \foreach \y in {0,1}
+                {
+                    \foreach \p in {0,1}
+                    {
+                        %desenha e preenche a barbatana de tubarão
+                        \draw[fill=gray!30] (2*\x-\p,2*\y-\p) arc [start angle = -90, end angle = 0, radius = 1] arc [start angle=90, end angle = 0, radius = 1]--cycle;
+                    }
+                }
+            }
+        \end{scope}
+        %linhas a tracejado
+        \draw[dashed] (0,0)--(0,1) (0,2)--(0,3)--(6,3)--(6,2) (6,0)--(6,1);
+        %linhas a cheio
+        \draw (0,0)--(6,0) (0,1)--(0,2) (6,1)--(6,2);
+    \end{tikzpicture}
+    \caption{}
+    \label{fig5}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        %desenha a barbatana de tubarão acima do eixo do x
+        \draw[ultra thick, fill=gray!30] (0,0) arc [start angle = -90, end angle = 0, radius = 1] arc [start angle=90, end angle = 0, radius = 1]--cycle;
+        %desenha a barbatana de tubarão abaixo do eixo do x
+        \draw[ultra thick] (0,0) arc [start angle = 90, end angle = 0, radius = 1] arc [start angle=-90, end angle = 0, radius = 1];
+        %desenha e marca o ponto P
+        \draw[fill] (1,1) circle [radius=1pt] node[left]{$P$};
+        %desenha os eixos
+        \draw[thick, ->, >=stealth] (-1,0)--(3,0)node[below]{$x$};
+        \draw[thick, ->, >=stealth] (0,-2)--(0,2)node[left]{$y$};
+        %marca o ponto O
+        \node at (0,0) [below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \def\r{2}
+    \def\startAngle{40}
+    \begin{tikzpicture}[scale=1.2]
+        %define coordenadas
+        \coordinate[label=below right:{$O$}] (O) at (0,0);
+        \coordinate[label=right:{$C$}] (C) at (\startAngle:\r);
+        \coordinate[label=left:{$B$}] (B) at (180:\r);
+        \coordinate[label=left:{$A$}] (A) at ($(B) - (0,3)$);
+        \coordinate (A1) at ($(B) + 0.8*(B) - 0.8*(A)$);
+        %marca o ângulo
+        \draw pic [thick, draw,fill=gray!40, angle radius=16] {angle = C--B--A1};
+        %desenha triângulo
+        \draw[thick] (O)--(B) node[midway, below, sloped]{$r$}
+        (O)--(C) node[midway, below, sloped]{$r$}
+        (B)--(C) node[midway, above, sloped]{$d$};
+        %desenha reta vertical
+        \draw[thick] ($(A)+0.1*(A)-0.1*(B)$) -- (A1);
+        %desenha o arco
+        \draw[thick] (C) arc [start angle=\startAngle, end angle = 180, radius=\r];
+        %desenha pontosd
+        \draw[fill] (O) circle [radius=1pt];
+        \draw[fill] (B) circle [radius=1pt];
+        \draw[fill] (C) circle [radius=1pt];
+        \draw[fill] (A) circle [radius=1pt];
+        %coloca o label do ângulo
+        \node at ($(B) + (-0.05, 0.01)$) [above right]{$\alpha$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig7}
+\end{figure}
+\end{document}

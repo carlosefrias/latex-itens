@@ -1,0 +1,193 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles}
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=0.8, yscale=0.2]
+        %preencher as linhas horizontais
+        \foreach \y in {0,5,10,15,20,25}
+        {
+            %cria o label
+            \node[left] at (0,\y){\y};
+            %desenha a linha horizontal
+            \draw[thin,gray] (0,\y)--(16,\y);
+        }
+        %criar as barras verticais
+        \foreach \x/\y/\l in {1/13/Jan,3/12/Fev,5/17/Mar,7/18/Abr,9/22/Mai, 11/20/Jun, 13/21/Jul, 15/21/Ago}
+        {
+            %cria o label abaixo da barra
+            \node[below] at (\x,0){\l};
+            %cria a barra
+            \draw[fill=gray!50] (\x-0.25,0)--(\x+0.25,0)--(\x+0.25,\y)--(\x-0.25, \y)--cycle;
+            %cria o label acima da barra
+            \node[above] at (\x,\y){\y};
+        }
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:estatistica}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        %definir as coordenadas dos pontos
+        \coordinate[label=right:{$O$}] (O) at (0,0);
+        \coordinate[label=left:{$A$}] (A) at (-6,-4);
+        \coordinate[label=below:{$B$}] (B) at (0,-4);
+        \coordinate[label=above:{$D$}] (D) at (0,4);
+        %usando coordenadas polares (primeiro argumento é o ângulo, segundo é o raio)
+        \coordinate[label=below right:{$C$}] (C) at (90-110:4);
+        %desenhar o quadrado representando ângulo reto
+        \draw pic [draw,fill=gray!70,angle radius=8] {right angle = A--B--O};
+        %desenhar a circunferência
+        \draw[thick] (O) circle[radius=4];
+        %desenhar os dois triângulos
+        \draw[thick] (O)--(A)--(B)--cycle (B)--(C)--(D)--cycle;
+        %criar o label para a amplitude do arco (novamente coordenadas polares)
+        \node[above right] at (90-110+55:4){$110^{\circ}$};
+        %criar labels para os comprimentos
+        \node[right] at (0,-2){$4$ cm};
+        \node[below] at (-3,-4){$6$ cm};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:circunferencia}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.3]
+        %definir as coordenadas dos pontos (y,z,x)
+        \coordinate[label=below:{$A$}] (A) at (-4.5,0,4.5);
+        \coordinate[label=below:{$B$}] (B) at (4.5,0,4.5);
+        \coordinate[label=below:{$C$}] (C) at (4.5,0,-4.5);
+        \coordinate[label=below:{$D$}] (D) at (-4.5,0,-4.5);
+        
+        \coordinate[label=left:{$F$}] (F) at (-3,12,3);
+        \coordinate[label=right:{$G$}] (G) at (3,12,3);
+        \coordinate[label=right:{$H$}] (H) at (3,12,-3);
+        \coordinate[label=left:{$E$}] (E) at (-3,12,-3);
+        
+        \coordinate[label=above:{$I$}] (I) at (0,36,0);
+        %desenhar arestas a tracejado
+        \draw[thick, dashed] (A)--(D)--(C) (D)--(E) (F)--(E)--(H);
+        %criar o label para os 6cm
+        \node[below, fill=white] at ($(F)!.5!(G)$){$6$ cm};
+        %desenhar as arestas a cheio
+        \draw[thick] (A)--(B)--(C)--(H)--(G)--(F)--cycle (B)--(G);
+        %desenhar as arestas não visíveis da pirâmide
+        \draw[thin, dashed, gray!80] (F)--(I)--(H) (G)--(I)--(E);
+        %desenhar o label 9 cm
+        \node[below] at ($(A)!.5!(B)$){$9$ cm};
+        %desenhar linhas auxiliares e labels
+        \draw[dashed] (8,12,0)--(0,12,0)--(0,0,0)--(13.5,0,0) (I)--(13.5,36,0);
+        \draw[<->, >=stealth, thick] (8,12,0)--(8,0,0) node[midway, right] {$12$ cm};
+        \draw[<->, >=stealth, thick] (13.5,36,0)--(13.5,0,0) node[midway, right] {$36$ cm};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:tronco_piramide}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=0.5,yscale=0.3]
+        %definir coordenadas
+        \coordinate[label=below left:{$O$}] (O) at (0,0);
+        \coordinate[label=below:{$A$}] (A) at (3,0);
+        \coordinate[label=right:{$B$}] (B) at (3,18);
+        %desenhar triângulo
+        \draw[fill=gray!50] (O)--(A)--(B)--cycle;
+        %desenhar parabola
+        \draw[thick, domain=3.162:-3.162,samples=100] plot (\x,{2*\x*\x}) node[below left]{$f$};
+        %desenhar eixos
+        \draw[->, >=stealth] (-6,0)--(6,0)node[below]{$x$};
+        \draw[->, >=stealth] (0,-2)--(0,20)node[left]{$y$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:parabola}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+        %definir coordenadas
+        \coordinate[label=below left:{$O$}] (O) at (0,0);
+        \coordinate[label=right:{$A$}] (A) at (3,12);
+        %desenhar reta f (usando biblioteca calc - soma de pontos com vetores)
+        \draw[thick] ($(O)-0.2*(A)$)--($(A)+0.4*(A)$)node[below right]{$f$};
+        %desenhar o gráfico de g
+        \draw[thick, domain=2:15, samples=100] plot (\x, {36/\x}) node[above left]{$g$};
+        %label
+        \draw[thick, dashed] (A)--(3,0)node[below]{$3$};
+        %desenhar eixos
+        \draw[->, >=stealth] (-3,0)--(16,0)node[below]{$x$};
+        \draw[->, >=stealth] (0,-3)--(0,18)node[left]{$y$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:proporcionalidade}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+        %definir coordenadas
+        \coordinate[label=left:{$E$}] (E) at (0,1);
+        \coordinate[label=right:{$D$}] (D) at (3,0.7);
+        \coordinate[label=right:{$A$}] (A) at (2,-2.5);
+        %definir coordenadas usando bibliteca calc (soma de pontos com vetores)
+        \coordinate[label=left:{$B$}] (B) at ($(A) + 3*(A) - 3*(D)$);
+        \coordinate[label=right:{$C$}] (C) at ($(A) + 3*(A) - 3*(E)$);
+        %desenhar arestas
+        \draw[thick] (E)--(C)--(B)--(D)--cycle;
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:semelhanca}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=0.75, yscale=0.09]
+        %preencher as linhas horizontais
+        \foreach \y in {0, 10,20,30,40,50,60,70,80}
+        {
+            %cria o label
+            \node at (0,\y){\y};
+            %desenha a linha horizontal
+            \draw[thin,gray] (1,\y)--(19,\y);
+        }
+        %preencher as linhas verticais
+        \foreach \x/\l in {1/2011,3/2012,5/2013,7/2014,9/2015,11/2016,13/2017,15/2018,17/2019,19/2020}
+        {
+            %cria o label
+            \node[below] at (\x,0){\l};
+            %desenha a linha vertical
+            \draw[thin, gray] (\x,0)--(\x,80);
+        }
+        %desenhar os eixos
+        \draw[thick] (19,0)--(1,0)--(1,80);
+        %desenhar os segmentos unindo a nuvem de pontos
+        \draw[ultra thick] (1,58)--(3,53)--(5,50)--(7,54)--(9,61)--(11,68)--(13,70)--(15,65)--(17,69)--(19,62);
+        %criar a nuvem de pontos
+        \foreach \x/\y in {1/58,3/53,5/50,7/54,9/61, 11/68, 13/70, 15/65, 17/69, 19/62}
+        {
+            \draw[fill=black] (\x,\y) circle [x radius=0.15, y radius=1.2];
+        }
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:ex16}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,176 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin={2cm},vmargin={2cm}]{geometry}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{commath}
+\usepackage{tikz, tikz-3dplot}
+\usetikzlibrary{calc, angles, intersections}
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+    \def\lado{0.4} %define metade do lado dos quadrados pequenos
+    \begin{tikzpicture}
+        %desenhar o retângulo exterior
+        \draw[ultra thick] (\lado,\lado) rectangle (5-\lado,4-\lado);
+        %para cada coordenada (\x,\y)
+        \foreach \x in {1,...,4}
+        {
+            \foreach \y in{1,2,3}
+            {
+                %desenha o quadrado pequeno
+                \draw[ultra thick,fill=gray!20,rounded corners=2pt] (\x-\lado,\y-\lado)--(\x-\lado,\y+\lado)--(\x+\lado,\y+\lado)
+                --(\x+\lado,\y-\lado) -- cycle;
+                %calcula o valor do label do quadrado
+                \pgfmathtruncatemacro{\Result}{8-((\y-1)*4-\x)}
+                %coloca o label no centro do quadrado
+                \node at (\x,\y) {\Result};
+            }
+        }
+    \end{tikzpicture}
+    \caption{}
+    \label{fig1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \def\raio{3} %definir o raio da base
+    \tdplotsetmaincoords{80}{110} %definir ângulos de visualização 3D (usando tikz-3dplot)
+    \begin{tikzpicture}[tdplot_main_coords]
+        %definir uma rotação de atan(4/3) em torno do eixo Ox e um shift(translação) segundo o vetor (0,4,0)
+        \begin{scope}[shift={(0,4,0)}, rotate around x={atan(4/3)}]
+            % desenhar o círculo da base no plano de equação z=0
+            \begin{scope}[canvas is xy plane at z = 0]
+                % desenha o círculo
+                \draw [thick, name path=base] (0,0) circle[radius = \raio];
+                % definir coordenadas
+                \coordinate (C) at (105:\raio);
+                \coordinate (B) at (300:\raio);
+                \coordinate[label=above right:{$A$}] (A) at (0,0);
+            \end{scope}
+                %definir coordenadas
+                \coordinate[label=left:{$V$}] (V) at (0,0,5);
+                %desenha diretrizes do cone
+                \draw[thick] (B)--(V)--(C);
+                %desenha o ponto A
+                \draw[fill] (A) circle [radius=2pt];
+        \end{scope}
+        %determinar a interseção de Oy com a directriz do cone
+        \coordinate (Y) at (intersection of (0,0)--(0,6,0) and V--B);
+        %desenhar os eixos
+        \draw[thick, ->, >=stealth] (A)--(0,6,0) node[below]{$y$};
+        \draw[thick, dashed] (Y)--(A) (0,0)--(0,0,-3) (0,0)--(0,-3) (0,0)--(-3,0);
+        \draw[thick] (0,0)--(Y);
+        \draw[thick, ->, >=stealth] (0,0,0)--(0,0,6) node[left]{$z$};
+        \draw[thick, ->, >=stealth] (0,0)--(8,0) node[below right]{$x$};
+        %definir o label da origem
+        \node at (0,0) [below right]{$O$};
+    \end{tikzpicture}
+    
+    \caption{}
+    \label{fig2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \def\startAngle{70}%define a rotação do vetor CA em relação ao semieixo positivo de Ox
+    \begin{tikzpicture}[scale=0.8]
+        %definir coordenadas
+        \coordinate[label=below left:{$O$}] (O) at (0,0);
+        \coordinate[label=below right:{$C$}] (C) at (-2,1);
+        %definir coordenadas usando soma de pontos com vetores e coordenadas polares
+        \coordinate[label=above:{$A$}] (A) at ($(C) + (\startAngle:3)$);
+        \coordinate[label=left:{$B$}] (B) at ($(C) + (\startAngle+120:3)$);
+        %desenhar arestas BC e CA
+        \draw[thick] (B)--(C)--(A);
+        %desenhar arco AB
+        \draw[ultra thick] (A) arc [start angle=\startAngle, end angle=\startAngle+120, radius = 3] node[midway, above, sloped]{$2\pi$};
+        %desenhar arco BA
+        \draw[thick, dashed] (B) arc [start angle=\startAngle+120, end angle=360+\startAngle, radius = 3];
+        %desenhar eixos
+        \draw[thick,->,>=stealth](0,-2)--(0,6)node[left]{$y$};
+        \draw[thick,->,>=stealth](-6,0)--(2,0)node[below]{$x$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig3}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \def\xVal{3}%define um valor para x
+    \begin{tikzpicture}
+        %desenha o cabo (plot de uma função)
+        \draw[ultra thick, domain=0:10, samples=200] plot (\x, {6.3*(e^((\x-5)/12.6)+e^((5-\x)/12.6))-7.6});
+        %desenha a linha do solo
+        \draw[ultra thick] (-2,0)--(12,0);
+        %desenha os postes
+        \draw[line width=5pt, rounded corners=5pt](0,-0.05)--(0,{0.05 + 6.3*(e^(-5/12.6)+e^(5/12.6))-7.6})--cycle (10,-0.05)--(10,{0.05 + 6.3*(e^(-5/12.6)+e^(5/12.6))-7.6})--cycle;
+        %desenha as arestas com setas
+        \draw[thick, <->, >=stealth] (\xVal,0)--(\xVal,{6.3*(e^((\xVal-5)/12.6)+e^((5-\xVal)/12.6))-7.6}) node[midway, right]{$h\left(x\right)$};
+        %desenha arestas a tracejado
+        \draw[thick, dashed](0,0)--(0,-2) (10,0)--(10,-2) (\xVal,0)--(\xVal,-1);
+        %desenha as arestas com setas
+        \draw[thick, <->, >=stealth] (0,-1)--(\xVal,-1) node[midway, below]{$x$};
+        \draw[thick, <->, >=stealth](0,-2)--(10,-2) node[midway, below]{$10$ m};
+        %Coloca os labels de texto
+        \node at (0,{6.3*(e^(-5/12.6)+e^(5/12.6))-7.6}) [above]{Poste da esquerda};
+        \node at (10,{6.3*(e^(-5/12.6)+e^(5/12.6))-7.6}) [above]{Poste da direita};
+        \node at (11,0) [above]{Solo};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        %define as coordenadas dos pontos (usando coordenadas polares)
+        \coordinate[label=below right:{$W$}] (W) at (-45:2);
+        \coordinate[label=above:{$A$}] (A) at (0:1);
+        \coordinate[label=above:{$B$}] (B) at (180:1);
+        \coordinate[label=above:{$C$}] (C) at (180:4);
+        \coordinate[label=right:{$D$}] (D) at (-90:4);
+        %desenha os pontos (círculos)
+        \draw[fill] (W) circle[radius=2pt];
+        \draw[fill] (A) circle[radius=2pt];
+        \draw[fill] (B) circle[radius=2pt];
+        \draw[fill] (C) circle[radius=2pt];
+        \draw[fill] (D) circle[radius=2pt];
+        %desenha os eixos
+        \draw[thick,->,>=stealth](0,-5)--(0,5)node[left]{$\operatorname{Im}\left(z\right)$};
+        \draw[thick,->,>=stealth](-5,0)--(5,0)node[below]{$\operatorname{Re}\left(z\right)$};
+        %coloca o label da origem
+        \node at (0,0) [below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \def\angle{25}%definir um valor para x
+    \begin{tikzpicture}[scale=1.2]
+        %definir as coordenadas dos pontos (coordenadas polares)
+        \coordinate[label=right:{$B$}] (B) at (0,0);
+        \coordinate[label=above:{$C$}] (C) at (180-2*\angle:2);
+        \coordinate[label=left:{$A$}] (A) at (180:{8*cos(\angle)*cos(\angle)-2});
+        %marcar os ângulos
+        \draw pic [draw,fill=gray!70] {angle = B--A--C};
+        \draw pic [draw,fill=gray!70] {angle = C--B--A};
+        %desenha o triângulo
+        \draw[thick] (A)--(B)--(C)--cycle;
+        %colocação dos labels
+        \node at ($0.5*(B)+0.5*(C)$) [above right]{$2$ cm};
+        \node at ($(A) + 0.4*(\angle/1.7:1)$) [right]{$x$};
+        \node at ($(B) + 0.4*(180-\angle/0.7:1)$) [left]{$2x$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig6}
+\end{figure}
+\end{document}

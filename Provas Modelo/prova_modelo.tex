@@ -1,0 +1,277 @@
+\documentclass[12pt,a4paper]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{Proposta de Exame Nacional de Matemática A - 12.º Ano}
+\author{Carlos Frias}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Duração:} 150 minutos \hfill \textbf{Data:} \underline{\hspace{3cm}}
+
+\textbf{Nome:} \underline{\hspace{10cm}} \hfill \textbf{Número:} \underline{\hspace{3cm}}
+
+\textbf{Instruções:}
+\begin{itemize}
+    \item O exame é constituído por dois grupos: Grupo I e Grupo II.
+    \item No Grupo I, para cada questão, indique a única opção correta.
+    \item No Grupo II, apresente todos os cálculos e justificações necessárias.
+    \item Utilize apenas caneta ou esferográfica de tinta indelével, azul ou preta.
+    \item Não é permitido o uso de corretor.
+    \item É permitido o uso de calculadora gráfica.
+\end{itemize}
+
+\vspace{1cm}
+
+\section*{Grupo I}
+\textbf{Questões de Escolha Múltipla}
+
+Para cada uma das questões deste grupo, selecione a única opção correta.
+
+\begin{questions}
+
+\question
+Considere uma função \( f\), cuja derivada é definida por \( f'(x) = 3x^2 - 4x + 5 \). Qual é o valor do limite seguinte?
+
+\[
+\lim_{x \to 2} \frac{f(x) - f(2)}{x^2 - 4}
+\]
+
+\begin{choices}
+    \choice \(\frac{5}{4}\)
+    \choice \(\frac{7}{4}\)
+    \choice \(\frac{9}{4}\)
+    \choice \(\frac{11}{4}\)
+\end{choices}
+
+\question
+Qual das expressões seguintes define a derivada de $f(x) = e^{2x} \cdot \ln(x)$?
+\begin{choices}
+    \choice $f'(x) = 2e^{2x} \cdot \ln(x) + \frac{e^{2x}}{x}$
+    \choice $f'(x) = e^{2x} \cdot \ln(x) + \frac{e^{2x}}{x}$
+    \choice $f'(x) = 2e^{2x} \cdot \ln(x) - \frac{e^{2x}}{x}$
+    \choice $f'(x) = e^{2x} \cdot \ln(x) - \frac{e^{2x}}{x}$
+\end{choices}
+
+\question
+Qual é o valor de $\int_{0}^{1} x^2 \, dx$?
+\begin{choices}
+    \choice \(\frac{1}{2}\)
+    \choice \(\frac{1}{3}\)
+    \choice \(\frac{1}{4}\)
+    \choice \(\frac{1}{5}\)
+\end{choices}
+
+\question
+Considere o gráfico da função \( f \) representado abaixo:
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.6\textwidth,
+    height=0.4\textwidth,
+    axis lines=middle,
+    xlabel={\( x \)},
+    ylabel={\( y \)},
+    xmin=-3, xmax=3,
+    ymin=-2, ymax=2,
+    %xtick={-3, -2, -1, 0, 1, 2, 3},
+    %ytick={-2, -1, 0, 1, 2},
+    samples=100,
+    domain=-3:3,
+]
+\addplot[blue, thick] {x^3 - 3*x};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+Qual dos seguintes gráficos representa a segunda derivada \( f'' \) da função \( f \)?
+
+\begin{choices}
+    \choice 
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.3\textwidth,
+        height=0.2\textwidth,
+        axis lines=middle,
+        xlabel={\( x \)},
+        ylabel={\( y \)},
+        xmin=-3, xmax=3,
+        ymin=-2, ymax=2,
+        %xtick={-3, -2, -1, 0, 1, 2, 3},
+        %ytick={-2, -1, 0, 1, 2},
+        samples=100,
+        domain=-3:3,
+    ]
+    \addplot[red, thick] {6*x};
+    \end{axis}
+    \end{tikzpicture}
+
+    \choice 
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.3\textwidth,
+        height=0.2\textwidth,
+        axis lines=middle,
+        xlabel={\( x \)},
+        ylabel={\( y \)},
+        xmin=-3, xmax=3,
+        ymin=-2, ymax=7,
+        %xtick={-3, -2, -1, 0, 1, 2, 3},
+        %ytick={-2, -1, 0, 1, 2, 3, 4, 5, 6, 7},
+        samples=100,
+        domain=-3:3,
+    ]
+    \addplot[red, thick] {6};
+    \end{axis}
+    \end{tikzpicture}
+
+    \choice 
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.3\textwidth,
+        height=0.2\textwidth,
+        axis lines=middle,
+        xlabel={\( x \)},
+        ylabel={\( y \)},
+        xmin=-3, xmax=3,
+        ymin=-2, ymax=2,
+        %xtick={-3, -2, -1, 0, 1, 2, 3},
+        %ytick={-2, -1, 0, 1, 2},
+        samples=100,
+        domain=-3:3,
+    ]
+    \addplot[red, thick] {0};
+    \end{axis}
+    \end{tikzpicture}
+
+    \choice 
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.3\textwidth,
+        height=0.2\textwidth,
+        axis lines=middle,
+        xlabel={\( x \)},
+        ylabel={\( y \)},
+        xmin=-3, xmax=3,
+        ymin=-2, ymax=2,
+        %xtick={-3, -2, -1, 0, 1, 2, 3},
+        %$ytick={-2, -1, 0, 1, 2},
+        samples=100,
+        domain=-3:3,
+    ]
+    \addplot[red, thick] {-6*x};
+    \end{axis}
+    \end{tikzpicture}
+\end{choices}
+
+\question
+Considere o retângulo \([ABCD]\) representado abaixo:
+
+\begin{center}
+\begin{tikzpicture}
+\coordinate (A) at (0,0);
+\coordinate (B) at (4,0);
+\coordinate (C) at (4,3);
+\coordinate (D) at (0,3);
+
+\draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+\node at (A) [below left] {A};
+\node at (B) [below right] {B};
+\node at (C) [above right] {C};
+\node at (D) [above left] {D};
+
+\draw[red, ->, thick] (A) -- (B) node[midway, below] {\(\vec{AB}\)};
+\draw[red, ->, thick] (A) -- (C) node[midway, above left] {\(\vec{AC}\)};
+\end{tikzpicture}
+\end{center}
+
+Sabe-se que a área do retângulo é \( 12 \) e o perímetro é \( 14 \). Qual é o valor do produto escalar entre os vetores \(\vec{AB}\) e \(\vec{AC}\)?
+
+\begin{choices}
+    \choice 12
+    \choice 14
+    \choice 16
+    \choice 18
+\end{choices}
+
+\end{questions}
+
+\section*{Grupo II}
+\textbf{Questões de Desenvolvimento}
+
+Nas questões deste grupo, apresente todos os cálculos e justificações necessárias.
+
+\begin{questions}
+
+\question
+Considere a função \( f(x) = e^{x} \cdot (x^2 - 3x + 2) \).
+
+\begin{parts}
+    \part Determine os zeros da função \( f(x) \).
+    \part Calcule a derivada \( f'(x) \) e faça o estudo da monotonia da função, identificando os intervalos onde a função é crescente ou decrescente. Determine também a existência de extremos relativos (máximos ou mínimos locais), caso existam.
+    \part Calcule \( \lim_{x \to +\infty} f(x) \) e \( \lim_{x \to -\infty} f(x) \).
+\end{parts}
+
+\question
+Considere a função \( g(x) = \frac{1}{x^2 + 1} \).
+
+\begin{parts}
+    \part Mostre que a derivada de \( g(x) \) é dada por \( g'(x) = -\frac{2x}{(x^2 + 1)^2} \).
+    \part Estude a concavidade da função e identifique os pontos de inflexão, caso existam.
+\end{parts}
+
+\question
+Resolva a seguinte equação logarítmica:
+
+\[
+\log_2(x) + \log_2(x - 2) = 3
+\]
+
+\question
+Numa turma de 12.º ano, há 20 alunos, dos quais 12 são raparigas e 8 são rapazes. O professor vai escolher aleatoriamente 4 alunos para formar uma comissão.
+
+\begin{parts}
+    \part Quantas comissões diferentes podem ser formadas?
+    \part Qual é a probabilidade de a comissão ser constituída por 2 raparigas e 2 rapazes?
+    \part Qual é a probabilidade de a comissão incluir pelo menos uma rapariga?
+\end{parts}
+
+\question
+Considere a equação trigonométrica:
+
+\[
+2\sin^2(x) - 3\sin(x) + 1 = 0
+\]
+
+\begin{parts}
+    \part Mostre que a equação pode ser escrita na forma \( (2\sin(x) - 1)(\sin(x) - 1) = 0 \).
+    \part Resolva a equação no intervalo \( [0, 2\pi] \).
+\end{parts}
+
+\question
+No espaço tridimensional, considere os pontos \( A(1, 0, 0) \), \( B(0, 1, 0) \) e \( C(0, 0, 1) \).
+
+\begin{parts}
+    \part Determine a equação cartesiana do plano \( \alpha \) que contém os pontos \( A \), \( B \) e \( C \).
+    \part Calcule a distância do ponto \( P(0, 0, 0) \) ao plano \( \alpha \).
+\end{parts}
+
+\end{questions}
+
+\vspace{2cm}
+
+\textbf{Fim do Exame}
+
+\end{document}

@@ -8,6 +8,7 @@
 \usepackage{multicol}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{amsmath}
 \pgfplotsset{compat=1.18}
 
 \title{Proposta de Exame Nacional de Matemática A - 12.º Ano}
@@ -216,28 +217,29 @@ Nas questões deste grupo, apresente todos os cálculos e justificações necess
 \begin{questions}
 
 \question
-Considere a função \( f(x) = e^{x} \cdot (x^2 - 3x + 2) \).
+Considere a função \(f\), de domínio \(\mathbb{R}\), definida por\( f(x) = e^{x} \cdot (x^2 - 3x + 2) \).
 
 \begin{parts}
-    \part Determine os zeros da função \( f(x) \).
-    \part Calcule a derivada \( f'(x) \) e faça o estudo da monotonia da função, identificando os intervalos onde a função é crescente ou decrescente. Determine também a existência de extremos relativos (máximos ou mínimos locais), caso existam.
-    \part Calcule \( \lim_{x \to +\infty} f(x) \) e \( \lim_{x \to -\infty} f(x) \).
+    \part Determine os zeros da função \( f \).
+    \part Estude \( f \) quanto à monotonia, identificando os intervalos onde a função é crescente ou decrescente. Determine também a existência de extremos relativos (máximos ou mínimos relativos), caso existam.
 \end{parts}
 
 \question
 Considere a função \( g(x) = \frac{1}{x^2 + 1} \).
 
 \begin{parts}
-    \part Mostre que a derivada de \( g(x) \) é dada por \( g'(x) = -\frac{2x}{(x^2 + 1)^2} \).
+    \part Mostre que a derivada de \( g \) é dada por \( g'(x) = -\frac{2x}{(x^2 + 1)^2} \).
     \part Estude a concavidade da função e identifique os pontos de inflexão, caso existam.
 \end{parts}
 
 \question
-Resolva a seguinte equação logarítmica:
+Resolva a seguinte inequação:
 
 \[
-\log_2(x) + \log_2(x - 2) = 3
+\log_2(x) + \log_2(x - 2) \geq 3
 \]
+
+Apresente a solução na forma de intervalos ou união de intervalos.
 
 \question
 Numa turma de 12.º ano, há 20 alunos, dos quais 12 são raparigas e 8 são rapazes. O professor vai escolher aleatoriamente 4 alunos para formar uma comissão.
@@ -261,11 +263,33 @@ Considere a equação trigonométrica:
 \end{parts}
 
 \question
-No espaço tridimensional, considere os pontos \( A(1, 0, 0) \), \( B(0, 1, 0) \) e \( C(0, 0, 1) \).
+No espaço tridimensional, considere os pontos \( A(4, 0, 0) \), \( B(0, 2, 0) \) e \( C(0, 0, 3) \).
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    % Draw axes
+    \draw[->] (0,0,0) -- (5,0,0) node[anchor=north east]{$x$};
+    \draw[->] (0,0,0) -- (0,3,0) node[anchor=north west]{$y$};
+    \draw[->] (0,0,0) -- (0,0,4) node[anchor=south]{$z$};
+
+    % Draw points
+    \coordinate (A) at (4,0,0);
+    \coordinate (B) at (0,2,0);
+    \coordinate (C) at (0,0,3);
+
+    % Draw triangle
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+
+    % Label points
+    \node[anchor=south] at (A) {$A$};
+    \node[anchor=north east] at (B) {$B$};
+    \node[anchor=south] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
 
 \begin{parts}
-    \part Determine a equação cartesiana do plano \( \alpha \) que contém os pontos \( A \), \( B \) e \( C \).
-    \part Calcule a distância do ponto \( P(0, 0, 0) \) ao plano \( \alpha \).
+    \part Mostre que o plano \(ABC \) é definido por \(3x + 6y + 4z = 12 \).
+    \part Escreva uma condição que defina a esfera de centro \( O(0, 0, 0) \) e tangente ao plano \( ABC \).
 \end{parts}
 
 \end{questions}
